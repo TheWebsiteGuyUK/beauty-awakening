@@ -1,0 +1,32 @@
+---
+import { Image } from 'astro:assets';
+import Logo from '@assets/images/logo.webp'
+---
+<div class="flex justify-between text-lg items-center">
+
+	<ul class="hidden menu xl:menu-horizontal mx-auto gap-20">
+		<li><a>About</a></li>
+		<li>
+		  <details>
+			<summary>Treatments</summary>
+			<ul class="w-60  z-50">
+			  <li><a>Facials</a></li>
+			  <li><a>Nails</a></li>
+			  <li><a>Eye Treatments</a></li>
+			  <li><a>Hair Removal</a></li>
+			  <li><a href="">Massage</a></li>
+			  <li><a>Spa Treatments</a></li>
+			</ul>
+		  </details>
+		</li>
+	  </ul>
+	<a href="/" class="mx-auto">
+		<picture>
+			<Image src={Logo} alt="Logo" class="max-w-xs md:max-w-lg p-6 drop-shadow-sm"  loading="eager" />
+		</picture>
+	</a>
+	<ul class="hidden menu xl:menu-horizontal mx-auto gap-20">
+		<li><a href="/contact">Contact</a></li>
+		<li><a>Appointments</a></li>
+	  </ul>
+</div>

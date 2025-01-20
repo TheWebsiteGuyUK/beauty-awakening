@@ -1,0 +1,42 @@
+---
+import { Image } from 'astro:assets'
+import Garden from '@assets/images/castle-hill.webp'
+---
+
+<div class="bg-neutral h-dvh snap-center">
+  <h2
+    class="mx-auto max-w-7xl text-wrap px-3 py-20  text-center text-4xl font-extrabold tracking-tight text-white/90 drop-shadow animate-duration-[2000ms] animate-once text-glow-primary intersect:animate-fade-up  md:text-7xl  xl:py-40">
+    Awaken your beauty in the heart of North Devon's tranquility
+  </h2>
+  <div class="relative">
+    <Image src={Garden} alt="Castle Hill Garden" class="h-dvh w-full object-cover object-center" loading="lazy" />
+    <div class="absolute top-0 h-full w-full bg-gradient-to-b from-neutral via-primary/50 to-neutral">
+      <div class="mx-auto max-w-[90dvw] xl:max-w-screen-lg px-3 animate-duration-[1000ms] animate-once intersect:animate-fade-up">
+        <div
+          class="flex flex-col items-center justify-between gap-10 rounded bg-white/50 p-6 backdrop-blur-sm md:flex-row">
+          <div class="">
+            <div class="flex flex-col justify-between gap-6 px-3">
+              <article
+                class="flex w-full flex-col gap-6 text-pretty px-0 text-center text-2xl md:w-96 md:px-3 md:text-left xl:text-4xl">
+                <p>
+                  Beauty Awakening, by Chantelle is set in the stunning and tranquil gardens of Castle Hill, Filleigh,
+                  North Devon.
+                </p>
+              </article>
+              <div class="flex flex-row justify-center gap-6 px-0 md:px-3 lg:justify-start">
+                <button class="btn btn-primary"> Book now</button>
+                <button class="btn btn-neutral"> View treatments</button>
+              </div>
+            </div>
+          </div>
+          <div>
+            <video controls autoplay loop muted width="360" height="640" class="rounded">
+              <source src="/media/view.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

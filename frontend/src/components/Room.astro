@@ -1,0 +1,50 @@
+---
+import { Image } from 'astro:assets';
+import Room1 from '@assets/images/room1.webp';
+import Room2 from '@assets/images/room2.webp';
+
+---
+
+
+<section class="relative mt-40 py-40">
+    <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8 relative intersect:animate-fade-up animate-once animate-duration-[1000ms] py-10">
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+            <div class="bg-primary p-8 md:p-12 lg:px-16 lg:py-24 intersect:animate-fade-up animate-once animate-duration-[1000ms]">
+                <div class="mx-auto max-w-xl text-center">
+                    <h2 class="text-2xl font-bold text-white md:text-3xl">
+                        Unwind, Rejuvenate, and Rediscover Your Glow!
+                    </h2>
+
+                    <p class="text-white/90 mt-4 ">Whether you want to indulge in a dreamy facial and float away for a little while, or a gorgeous massage to take those aches and pains away… there is something here for everyone.
+                    </p>
+                    <p class="text-white/90 mt-4 ">Please take a look at my treatment menu to see all treatments available, and please don’t hesitate to get in touch if you have any questions at all.
+                    </p>
+                    <p class="text-white/90 mt-4 ">	Have a beautiful day, and I can’t wait to meet you. Chantelle x </p>
+
+                    <div class="mt-4 md:mt-8">
+                        <a
+                                href="#"
+                                class="inline-block rounded border border-white bg-white px-12 py-3 text-sm font-medium text-primary transition hover:bg-transparent hover:text-white focus:outline-none focus:ring focus:ring-yellow-400"
+                        >
+                            Book an Appointment
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 md:grid-cols-1 lg:grid-cols-2 intersect:animate-fade-up animate-once animate-duration-[1000ms]">
+                <Image
+                        alt=""
+                        src={Room1}
+                        class="h-40 w-full object-cover sm:h-56 md:h-full"
+                />
+
+                <Image
+                        alt=""
+                        src={Room2}
+                        class="h-40 w-full object-cover sm:h-56 md:h-full"
+                />
+            </div>
+        </div>
+    </div>
+</section>
