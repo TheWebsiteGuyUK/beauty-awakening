@@ -1,0 +1,117 @@
+---
+import Layout from '@layouts/Layout.astro'
+import directus from '@api/directus'
+import { readItems, readItem } from '@directus/sdk'
+import { Image } from 'astro:assets'
+import TopBar from '@components/TopBar.astro'
+
+export async function getStaticPaths() {
+  const treatmentPages = await directus.request(
+    readItems('treatment_pages', {
+      fields: ['*', { treatments: ['*'] }],
+    })
+  )
+  return treatmentPages.map((treatmentPage) => ({ params: { slug: treatmentPage.slug }, props: treatmentPage }))
+}
+const treatmentPage = Astro.props
+
+function truncateText(text, limit) {
+  if (text.length > limit) {
+    return text.substring(0, limit) + '...';
+  } else {
+    return text;
+  }
+}
+---
+<Layout title={treatmentPage.title}>
+  <div class="relative min-h-dvh pb-[35rem]">
+    <Image
+      src={`${import.meta.env.PUBLIC_API}/assets/${treatmentPage.featured_image}`}
+      alt="Logo"
+      class="h-dvh w-full object-cover object-center"
+      loading="eager"
+      width={1600}
+      height={600}
+    />
+    <div class="absolute top-0 h-full w-full bg-gradient-to-b from-neutral via-white/20 to-neutral backdrop-blur-sm">
+      <TopBar />
+      <header class="mx-auto max-w-6xl text-center">
+        <h1 class="animate-fade text-wrap text-center text-2xl font-bold tracking-tight text-white/90 drop-shadow animate-duration-[1000ms] animate-once animate-ease-in text-glow-white/50 md:text-6xl">
+          {treatmentPage.headline}
+        </h1>
+        <p class="py-10">{treatmentPage.excerpt}</p>
+      </header>
+      <div class="mx-auto max-w-screen-2xl">
+        <ul class="grid grid-cols-1 gap-3 p-3 md:grid-cols-2 xl:grid-cols-3">
+          {
+            treatmentPage.treatments &&
+              treatmentPage.treatments.map(async (treatment) => {
+                const fullTreatment = await directus.request(readItem('treatments', treatment.id, { fields: ['*'] }))
+                return (
+                  <li class="card scale-95 bg-white/60 backdrop-blur transition-all animate-duration-1000 animate-ease-in-out hover:scale-100">
+                    <div class="card-body">
+                      <h2 class="card-title text-xl font-medium">
+                        <span class="mr-3">
+                          {fullTreatment.name} 
+                        </span>
+                        
+                      
+                      </h2>
+                      <p  set:html={truncateText(fullTreatment.description, 50)} /> <!-- Limit to 100 characters -->
+                      <div class="card-actions justify-between items-center">
+                        <div class="flex flex-row">
+                          <span class="flex flex-row items-center text-sm mr-2">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 mr-1 bg-neutral rounded-full p-1" ><line x1="10" x2="14" y1="2" y2="2"/><line x1="12" x2="15" y1="14" y2="11"/><circle cx="12" cy="14" r="8"/></svg>
+                          {fullTreatment.duration} 
+                        </span>
+                        <span class="flex flex-row items-center text-sm">
+                          <svg class="w-6 h-6 mr-1 bg-neutral rounded-full p-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M18 7c0-5.333-8-5.333-8 0"/><path d="M10 7v14"/><path d="M6 21h12"/><path d="M6 13h10"/></svg>
+                        {fullTreatment.cost} 
+                        </span>
+                        </div>
+                        <div>
+                          <button class="btn" onclick={`document.getElementById('${fullTreatment.id}').showModal()`}>More info</button>
+                          <a href={`${fullTreatment.booking_link}`}>
+                            <button class="btn btn-primary">Book Now</button>
+                          </a>
+                        
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Open the modal using ID.showModal() method -->
+                    <dialog id={`${fullTreatment.id}`} class="modal">
+                      <div class="modal-box">
+                        <h3 class="text-lg font-bold">{fullTreatment.name}</h3>
+                        <p class="py-4" set:html={fullTreatment.description} />
+                        {fullTreatment.disclaimer && <p class="text-xs">{fullTreatment.disclaimer}</p>}
+                        <div class="flex flex-row py-3">
+                          <span class="flex flex-row items-center text-sm mr-2">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 mr-1 bg-neutral rounded-full p-1" ><line x1="10" x2="14" y1="2" y2="2"/><line x1="12" x2="15" y1="14" y2="11"/><circle cx="12" cy="14" r="8"/></svg>
+                          {fullTreatment.duration} 
+                        </span>
+                        <span class="flex flex-row items-center text-sm">
+                          <svg class="w-6 h-6 mr-1 bg-neutral rounded-full p-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M18 7c0-5.333-8-5.333-8 0"/><path d="M10 7v14"/><path d="M6 21h12"/><path d="M6 13h10"/></svg>
+                        {fullTreatment.cost} 
+                        </span>
+                        </div>
+                        <a href={`/treatments/${treatmentPage.slug}`}>
+                            <button class="btn btn-primary">Book Now</button>
+                          </a>
+                          
+                        <div class="modal-action">
+                          <form method="dialog">
+                            <!-- if there is a button in form, it will close the modal -->
+                            <button class="btn">Close</button>
+                          </form>
+                        </div>
+                      </div>
+                    </dialog>
+                  </li>
+                )
+              })
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</Layout>

@@ -1,91 +1,16 @@
 ---
-import { Image } from "astro:assets";
-import Massage from "@assets/images/massage.webp";
-import Manicure from "@assets/images/manicure.webp";
-import Facials from "@assets/images/facials.webp";
-import Beauty from "@assets/images/beauty.webp";
+import Layout from "@layouts/Layout.astro";
+import directus from "@api/directus";
+import { readSingleton } from "@directus/sdk";
+
+const global = await directus.request(readSingleton("treatment_categories"));
 ---
 
-<div
-  class="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-screen-2xl mx-auto px-3">
-  <div
-    class="backdrop-blur bg-white/20 shadow-xl p-3 lg:p-6 rounded-lg inset-ring inset-ring-white/20 h-full animate-fade-up animate-once animate-duration-1000 animate-delay-[3000ms] animate-ease-in">
-    <Image
-      class="h-20 lg:h-40 rounded w-full object-cover object-center mb-3 lg:mb-6"
-      src={Massage}
-      alt="content"
-      loading="eager"
-    />
-    <h3
-      class="tracking-widest text-white text-sm font-medium title-font uppercase">
-      Massage Therapy
-    </h3>
-    <h2 class="hidden md:block text-lg text-gray-900 font-medium title-font lg:mb-4">
-      Relieve your aches and pains.
-    </h2>
-    <p class="hidden xl:block leading-relaxed text-gray-800">
-      Massage treatments offer a sanctuary from the daily grind, melting away
-      tension and easing those persistent aches and pains.
-    </p>
-  </div>
-  <div
-    class="backdrop-blur bg-white/20 shadow-xl p-3 lg:p-6 rounded-lg inset-ring inset-ring-white/20 h-full animate-fade-up animate-once animate-duration-1000 animate-delay-[3500ms] animate-ease-in">
-    <Image
-      class="h-20 lg:h-40 rounded w-full object-cover object-center mb-3 lg:mb-6"
-      src={Manicure}
-      alt="content"
-      loading="eager"
-    />
-    <h3
-      class="tracking-widest text-white text-sm font-medium title-font uppercase">
-      Manicures & Pedicures
-    </h3>
-    <h2 class="hidden md:block text-lg text-gray-900 font-medium title-font lg:mb-4">
-      Hands and Feet that Shine
-    </h2>
-    <p class="hidden xl:block leading-relaxed text-gray-800">
-      Manicures and pedicures offer the perfect blend of relaxation and care,
-      leaving hands and feet looking refreshed and polished.
-    </p>
-  </div>
-  <div
-    class="backdrop-blur bg-white/20 shadow-xl p-3 lg:p-6 rounded-lg inset-ring inset-ring-white/20 h-full animate-fade-up animate-once animate-duration-1000 animate-delay-[4000ms] animate-ease-in">
-    <Image
-      class="h-20 lg:h-40 rounded w-full object-cover object-center mb-3 lg:mb-6"
-      src={Facials}
-      alt="content"
-      loading="eager"
-    />
-    <h3
-      class="tracking-widest text-white text-sm font-medium title-font uppercase">
-      Facial Treatments
-    </h3>
-    <h2 class="hidden md:block text-lg text-gray-900 font-medium title-font lg:mb-4">
-      Rejuvenate and revitalize skin
-    </h2>
-    <p class="hidden xl:block leading-relaxed text-gray-800">
-      Facial treatments provide a refreshing boost to the skin, promoting a
-      healthy and radiant complexion.
-    </p>
-  </div>
-  <div
-    class="backdrop-blur bg-white/20 shadow-xl p-3 lg:p-6 rounded-lg inset-ring inset-ring-white/20 h-full animate-fade-up animate-once animate-duration-1000 animate-delay-[4500ms] animate-ease-in">
-    <Image
-      class="h-20 lg:h-40 rounded w-full object-cover object-center mb-3 lg:mb-6"
-      src={Beauty}
-      alt="content"
-      loading="eager"
-    />
-    <h3
-      class="tracking-widest text-white text-sm font-medium title-font uppercase">
-      Beauty Treatments
-    </h3>
-    <h2 class="hidden md:block text-lg text-gray-900 font-medium title-font lg:mb-4">
-      Elevate Your natural beauty
-    </h2>
-    <p class="hidden xl:block leading-relaxed text-gray-800">
-      Beauty treatments highlight features and enhance natural elegance,
-      offering a personalized approach to looking and feeling your best.
-    </p>
-  </div>
-</div>
+<Layout title={global.title}>
+  <main>
+    <div>
+      <h1>{global.title}</h1>
+      <p>{global.description}</p>
+    </div>
+  </main>
+</Layout>

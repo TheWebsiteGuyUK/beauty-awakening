@@ -3,93 +3,21 @@ import { Image } from 'astro:assets'
 import Hero from '@assets/images/woman-waiting.webp'
 import ServiceCards from '@components/ServiceCards.astro'
 import TopBar from '@components/TopBar.astro'
+import Treatments from '@components/Treatments.astro'
+import MobileButtons from '@components/MobileButtons.astro'
 ---
 
-<div class="h-dvh snap-center">
-  <Image src={Hero} alt="Logo" class="h-dvh w-full object-cover object-center" loading="eager" />
+<div class="h-screen snap-center">
+  <Image src={Hero} alt="Logo" class="h-screen w-full object-cover object-center" loading="eager" />
   <div class="absolute top-0 h-dvh w-full bg-gradient-to-b from-neutral via-white/20 to-neutral">
 	<TopBar />
     <h1
       class="mx-auto max-w-6xl animate-fade text-wrap text-center text-4xl font-extrabold tracking-tight text-white/90 drop-shadow animate-delay-500 animate-duration-[3000ms] animate-once animate-ease-in text-glow-white/50 md:py-20 md:text-8xl">
       A warm, glowing welcome awaits you
     </h1>
-    <div class="mx-auto grid max-w-xl grid-cols-2 place-content-center gap-3 px-6 py-10 lg:hidden">
-      <button class="animate-duration-2000 btn btn-sm animate-fade animate-delay-[1000ms] animate-once animate-ease-in">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="h-4 w-4 stroke-neutral-600"
-          ><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path><path
-            d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg
-        >
-        Treatments
-      </button>
-      <button class="animate-duration-2000 btn btn-sm animate-fade animate-delay-[1500ms] animate-once animate-ease-in">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="h-4 w-4 stroke-neutral-600"
-          ><path d="M21 7.5V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3.5"></path><path d="M16 2v4"></path><path
-            d="M8 2v4"></path><path d="M3 10h5"></path><path d="M17.5 17.5 16 16.3V14"></path><circle
-            cx="16"
-            cy="16"
-            r="6"></circle></svg
-        >
-        Book Now
-      </button>
-      <button class="animate-duration-2000 btn btn-sm animate-fade animate-delay-[2000ms] animate-once animate-ease-in">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="h-4 w-4 stroke-neutral-600"
-          ><path d="M18 8c0 3.613-3.869 7.429-5.393 8.795a1 1 0 0 1-1.214 0C9.87 15.429 6 11.613 6 8a6 6 0 0 1 12 0"
-          ></path><circle cx="12" cy="8" r="2"></circle><path
-            d="M8.714 14h-3.71a1 1 0 0 0-.948.683l-2.004 6A1 1 0 0 0 3 22h18a1 1 0 0 0 .948-1.316l-2-6a1 1 0 0 0-.949-.684h-3.712"
-          ></path></svg
-        >
-        Directions
-      </button>
-      <button class="animate-duration-2000 btn btn-sm animate-fade animate-delay-[2500ms] animate-once animate-ease-in">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="h-4 w-4 stroke-neutral-600"
-          ><path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2z"></path><path
-            d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"></path></svg
-        >
-        Let's Chat
-      </button>
-    </div>
+    <MobileButtons />
     <div class="">
-      <ServiceCards />
+      <Treatments />
     </div>
   </div>
 </div>

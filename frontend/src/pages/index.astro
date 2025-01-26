@@ -3,12 +3,13 @@ import CastleHill from '@components/CastleHill.astro'
 import Welcome from '@components/Welcome.astro'
 import Layout from '@layouts/Layout.astro'
 import Room from '@components/Room.astro'
+export const prerender = true
 ---
 
 <Layout title="Welcome">
   <div class="snap-y">
     <Welcome />
     <CastleHill />
-	<Room />
+	  <Room />
   </div>
 </Layout>

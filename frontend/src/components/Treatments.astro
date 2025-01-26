@@ -18,9 +18,10 @@ const treatmentPages = await directus.request(
 <ul class="mx-auto grid max-w-screen-2xl grid-cols-2 gap-6 px-3 lg:grid-cols-3">
   {
     treatmentPages.map((treatmentPage) => (
-      <a href={`/treatments/${treatmentPage.slug}`}>
+
         <li class="inset-ring inset-ring-white/20 h-full animate-fade-up rounded-lg bg-white/20 p-3 shadow-xl backdrop-blur animate-delay-[1000ms] animate-duration-1000 animate-once animate-ease-in lg:p-6">
-          <Image
+            <a href={`/treatments/${treatmentPage.slug}`} data-astro-prefetch="tap">
+            <Image
             class="mb-3 h-20 w-full rounded object-cover object-center lg:mb-6 lg:h-40"
             src={`${import.meta.env.PUBLIC_API}/assets/${treatmentPage.featured_image}`}
             alt="content"
@@ -30,13 +31,14 @@ const treatmentPages = await directus.request(
           />
           <h3 class="title-font text-sm font-medium uppercase tracking-widest text-white">{treatmentPage.headline}</h3>
           <h2 class="title-font hidden text-lg font-medium text-gray-900 md:block lg:mb-4">
-            {treatmentPage.subheader}
+            {treatmentPage.subheadline}
           </h2>
           <p class="hidden leading-relaxed text-gray-800 xl:block">
             {treatmentPage.excerpt}
           </p>
-        </li>
       </a>
+        </li>
+
     ))
   }
 </ul>

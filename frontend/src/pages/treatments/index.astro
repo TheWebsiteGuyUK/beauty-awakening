@@ -1,0 +1,35 @@
+---
+import Layout from "@layouts/Layout.astro";
+import directus from "@api/directus";
+import { readItems } from "@directus/sdk";
+
+const treatments = await directus.request(
+    readItems("treatment_pages", {
+      fields: [
+        '*',
+        { treatments: ["*"] },
+      ],
+      // sort: ["-published_date"],
+    })
+);
+---
+
+<Layout title="Treatments">
+  <main>
+    <h1>Treatments</h1>
+    <ul>
+      {
+        treatments.map((treatment) => (
+            <li>
+              <a href={`/treatments/${treatment.slug}`}>
+                <h2>{treatment.title}</h2>
+              </a>
+              <span>
+          {treatment.published_date} &bull; {treatment.treatments.name}
+        </span>
+            </li>
+        ))
+      }
+    </ul>
+  </main>
+</Layout>
