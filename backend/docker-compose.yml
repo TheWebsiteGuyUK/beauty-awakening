@@ -10,61 +10,60 @@ services:
             - ./uploads:/uploads
             - ./extensions:/extensions
         environment:
-            SECRET: "replace-with-random-value"
-            ADMIN_EMAIL: "patrick@thewebsiteguy.uk"
-            ADMIN_PASSWORD: "Stud10Adm!n"
+            SECRET: ${SECRET}
+            ADMIN_EMAIL: ${ADMIN_EMAIL}
+            ADMIN_PASSWORD: ${ADMIN_PASSWORD}
             DB_CLIENT: "sqlite3"
             DB_FILENAME: "/database/data.db"
             WEBSOCKETS_ENABLED: "true"
             HOST: "0.0.0.0"
             PORT: "8055"
             PUBLIC_URL: "http://localhost:8055"
-            LOG_LEVEL: "info"  # Or your desired log level
-            LOG_STYLE: "pretty" # Or "raw"
-            MAX_PAYLOAD_SIZE: "1mb" # Or your desired value
-            ROOT_REDIRECT: "./admin" # Or your desired redirect, or false to disable
-            SERVE_APP: "true" # Or "false"
-            GRAPHQL_INTROSPECTION: "true" # Or "false"
-            MAX_BATCH_MUTATION: "Infinity" # Or your desired limit
-            RATE_LIMITER_ENABLED: "false" # Or "true"
-            RATE_LIMITER_STORE: "memory" # Or "redis"
-            RATE_LIMITER_POINTS: "25" # Or your desired value
-            RATE_LIMITER_DURATION: "1" # Or your desired value
-            CACHE_ENABLED: "false" # Or "true"
-            CACHE_TTL: "5m" # Or your desired value
-            CACHE_NAMESPACE: "system-cache" # Or your desired value
-            CACHE_AUTO_PURGE: "false" # Or "true"
-            CACHE_AUTO_PURGE_IGNORE_LIST: "directus_activity,directus_presets" # Or your desired list
-            CACHE_STORE: "memory" # Or "redis"
-            ASSETS_CACHE_TTL: "30d" # Or your desired value
+            LOG_LEVEL: "info"
+            LOG_STYLE: "pretty"
+            MAX_PAYLOAD_SIZE: "1mb"
+            ROOT_REDIRECT: "./admin"
+            SERVE_APP: "true"
+            GRAPHQL_INTROSPECTION: "true"
+            MAX_BATCH_MUTATION: "Infinity"
+            RATE_LIMITER_ENABLED: "false"
+            RATE_LIMITER_STORE: "memory"
+            RATE_LIMITER_POINTS: "25"
+            RATE_LIMITER_DURATION: "1"
+            CACHE_ENABLED: "false"
+            CACHE_TTL: "5m"
+            CACHE_NAMESPACE: "system-cache"
+            CACHE_AUTO_PURGE: "false"
+            CACHE_AUTO_PURGE_IGNORE_LIST: "directus_activity,directus_presets"
+            CACHE_STORE: "memory"
+            ASSETS_CACHE_TTL: "30d"
             STORAGE_LOCATIONS: "local"
             STORAGE_LOCAL_DRIVER: "local"
-            STORAGE_LOCAL_ROOT: "/uploads"  # Important: Make sure this matches your volume mount
-            ACCESS_TOKEN_TTL: "15m" # Or your desired value
-            REFRESH_TOKEN_TTL: "7d" # Or your desired value
-            REFRESH_TOKEN_COOKIE_SECURE: "false" # Or "true"
-            REFRESH_TOKEN_COOKIE_SAME_SITE: "lax" # Or your desired value
-            REFRESH_TOKEN_COOKIE_NAME: "directus_refresh_token" # Or your desired name
-            SESSION_COOKIE_TTL: "1d" # Or your desired value
-            SESSION_COOKIE_SECURE: "false" # Or "true"
-            SESSION_COOKIE_SAME_SITE: "lax" # Or your desired value
-            SESSION_COOKIE_NAME: "directus_session_token" # Or your desired name
-            CORS_ENABLED: "true" # Or "false"
-            CORS_ORIGIN: "true" # Or your desired origin(s)
+            STORAGE_LOCAL_ROOT: "/uploads"
+            ACCESS_TOKEN_TTL: "15m"
+            REFRESH_TOKEN_TTL: "7d"
+            REFRESH_TOKEN_COOKIE_SECURE: "false"
+            REFRESH_TOKEN_COOKIE_SAME_SITE: "lax"
+            REFRESH_TOKEN_COOKIE_NAME: "directus_refresh_token"
+            SESSION_COOKIE_TTL: "1d"
+            SESSION_COOKIE_SECURE: "false"
+            SESSION_COOKIE_SAME_SITE: "lax"
+            SESSION_COOKIE_NAME: "directus_session_token"
+            CORS_ENABLED: "true"
+            CORS_ORIGIN: "true"
             CORS_METHODS: "GET,POST,PATCH,DELETE"
             CORS_ALLOWED_HEADERS: "Content-Type,Authorization"
             CORS_EXPOSED_HEADERS: "Content-Range"
-            CORS_CREDENTIALS: "true" # Or "false"
-            CORS_MAX_AGE: "18000" # Or your desired value
+            CORS_CREDENTIALS: "true"
+            CORS_MAX_AGE: "18000"
             EXTENSIONS_PATH: "./extensions"
-            EXTENSIONS_AUTO_RELOAD: "false" # Or "true"
-            EMAIL_FROM: "autobot@thewebsiteguy.uk"
+            EXTENSIONS_AUTO_RELOAD: "false"
+            EMAIL_FROM: ${EMAIL_SMTP_USER}
             EMAIL_TRANSPORT: "smtp"
             EMAIL_SENDMAIL_NEW_LINE: "unix"
             EMAIL_SENDMAIL_PATH: "/usr/sbin/sendmail"
             EMAIL_SMTP_HOST: "mail.stackmail.com"
             EMAIL_SMTP_PORT: "465"
             EMAIL_SMTP_SECURE: "true"
-            EMAIL_SMTP_USER: "autobot@thewebsiteguy.uk"
-            EMAIL_SMTP_PASSWORD: "Rob0tM@il" # Consider using a .env file for this
-
+            EMAIL_SMTP_USER: ${EMAIL_SMTP_USER}
+            EMAIL_SMTP_PASSWORD: ${EMAIL_SMTP_PASSWORD}
