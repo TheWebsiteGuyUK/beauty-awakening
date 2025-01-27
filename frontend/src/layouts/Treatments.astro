@@ -3,13 +3,12 @@ import MobileNav from "@components/MobileNav.astro";
 import Footer from "@components/Footer.astro";
 import { ClientRouter } from 'astro:transitions';
 
-
 export interface Props {
 	title: string;
+    backgroundImageUrl: string;
 }
 
-const { title } = Astro.props;
-
+const { title, backgroundImageUrl } = Astro.props;
 ---
 <!doctype html>
 <html lang="en" class="scroll-auto bg-neutral">
@@ -22,9 +21,15 @@ const { title } = Astro.props;
 		<title>{title} | Beauty Awakening</title>
 	</head>
 	<body>
-		<slot />
-		<Footer />
-		<MobileNav />
+		<div class="flex flex-col min-h-dvh fixed inset-0 bg-cover bg-no-repeat bg-center bg-neutral" style={`background-image: url(${backgroundImageUrl});`}>
+            <main class="flex-grow relative">
+                <slot />
+            </main>
+            <Footer />
+    	    <MobileNav />
+        </div>
+		
+            
 	</body>
 </html>
 

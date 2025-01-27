@@ -1,35 +1,28 @@
 ---
-import Layout from "@layouts/Layout.astro";
-import directus from "@api/directus";
-import { readItems } from "@directus/sdk";
 
-const treatments = await directus.request(
-    readItems("treatment_pages", {
-      fields: [
-        '*',
-        { treatments: ["*"] },
-      ],
-      // sort: ["-published_date"],
-    })
-);
+import Layout from '@layouts/Treatments.astro'
+
+import TopBar from '@components/TopBar.astro'
+
+import directus from '@api/directus'
+import { readItems } from '@directus/sdk'
+
+const homePage = await directus.request(
+  readItems('treatment_page', {
+    fields: ['*'],
+    filter: {
+      // status: {
+      //   _eq: 'published',
+      // },
+    },
+  })
+)
+
+
+const treatmentPage = Astro.props
+const backgroundImageUrl = `${import.meta.env.PUBLIC_API}/assets/${treatmentPage.featured_image}`;
+
 ---
-
-<Layout title="Treatments">
-  <main>
-    <h1>Treatments</h1>
-    <ul>
-      {
-        treatments.map((treatment) => (
-            <li>
-              <a href={`/treatments/${treatment.slug}`}>
-                <h2>{treatment.title}</h2>
-              </a>
-              <span>
-          {treatment.published_date} &bull; {treatment.treatments.name}
-        </span>
-            </li>
-        ))
-      }
-    </ul>
-  </main>
+<Layout title={treatmentPage.title} backgroundImageUrl={backgroundImageUrl}>
+  
 </Layout>

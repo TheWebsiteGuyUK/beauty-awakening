@@ -1,6 +1,19 @@
 ---
 import { Image } from 'astro:assets';
 import Logo from '@assets/images/logo.webp'
+import directus from '@api/directus'
+import { readItems, readItem } from '@directus/sdk'
+const treatmentPages = await directus.request(
+  readItems('treatment_pages', {
+    fields: ['*'],
+    filter: {
+      status: {
+        _eq: 'published',
+      },
+    },
+  })
+)
+
 ---
 <div class="flex justify-between text-lg items-center">
 
@@ -9,13 +22,13 @@ import Logo from '@assets/images/logo.webp'
 		<li>
 		  <details>
 			<summary><a href="/treatments">Treatments</a></summary>
-			<ul class="w-60  z-50">
-			  <li><a>Facials</a></li>
-			  <li><a>Nails</a></li>
-			  <li><a>Eye Treatments</a></li>
-			  <li><a>Hair Removal</a></li>
-			  <li><a href="">Massage</a></li>
-			  <li><a>Spa Treatments</a></li>
+			<ul class="w-60 z-50">
+				{
+					treatmentPages.map((treatmentPage) => (
+						<li><a href={`/treatments/${treatmentPage.slug}`} data-astro-prefetch="tap">{treatmentPage.headline}</a></li>
+				
+					))
+				  }
 			</ul>
 		  </details>
 		</li>

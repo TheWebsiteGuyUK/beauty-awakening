@@ -1,6 +1,19 @@
 ---
 import { Image } from 'astro:assets'
 import Beauty from '@assets/images/beauty2.webp'
+
+const businessInfo = await directus.request(
+  readItems('business_info', {
+    fields: ['*'],
+    filter: {
+      // status: {
+      //   _eq: 'published',
+      // },
+    },
+  })
+)
+
+const currentYear = new Date().getFullYear();
 ---
 <footer class="relative bg-primary text-gray-50 lg:grid lg:grid-cols-5 pb-10 md:pb-0 intersect:animate-fade-up animate-once animate-duration-[2000ms]">
     <div class="relative block h-32 lg:col-span-2 lg:h-full ">
@@ -99,15 +112,15 @@ import Beauty from '@assets/images/beauty2.webp'
 
                     <ul class="mt-6 space-y-4 text-sm">
                         <li>
-                            <a href="#" class=" transition hover:opacity-75"> Treatments </a>
+                            <a href="/treatments" class=" transition hover:opacity-75"> Treatments </a>
                         </li>
 
                         <li>
-                            <a href="#" class=" transition hover:opacity-75"> Appointments </a>
+                            <a href="/appointments" class=" transition hover:opacity-75"> Appointments </a>
                         </li>
 
                         <li>
-                            <a href="#" class=" transition hover:opacity-75"> Contact </a>
+                            <a href="/contact" class=" transition hover:opacity-75"> Contact </a>
                         </li>
 
 
@@ -119,16 +132,16 @@ import Beauty from '@assets/images/beauty2.webp'
 
                     <ul class="mt-6 space-y-4 text-sm">
                         <li>
-                            <a href="#" class=" transition hover:opacity-75"> About </a>
+                            <a href="/about" class=" transition hover:opacity-75"> About </a>
                         </li>
 
                         <li>
-                            <a href="#" class=" transition hover:opacity-75"> Terms & Conditions </a>
+                            <a href="/terms" class=" transition hover:opacity-75"> Terms & Conditions </a>
                         </li>
 
-                        <li>
+                        <!-- <li>
                             <a href="#" class=" transition hover:opacity-75"> Reviews </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </div>
@@ -138,16 +151,12 @@ import Beauty from '@assets/images/beauty2.webp'
             <div class="sm:flex sm:items-center sm:justify-between">
                 <ul class="flex flex-wrap gap-4 text-xs">
                     <li>
-                        <a href="#" class="text-gray-100 transition hover:opacity-75"> Privacy Policy </a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="text-gray-100 transition hover:opacity-75"> Cookies </a>
+                        <a href="/privacy" class="text-gray-100 transition hover:opacity-75"> Privacy Policy </a>
                     </li>
                 </ul>
 
                 <p class="mt-8 text-xs text-gray-100 sm:mt-0">
-                    &copy; <script is:inline>document.write( new Date().getFullYear() );</script>. Beauty Awakening. All rights reserved.
+                    &copy; {currentYear}. Beauty Awakening by Chantelle. All rights reserved.
                 </p>
             </div>
         </div>

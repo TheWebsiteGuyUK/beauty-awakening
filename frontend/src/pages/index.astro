@@ -3,12 +3,29 @@ import CastleHill from '@components/CastleHill.astro'
 import Welcome from '@components/Welcome.astro'
 import Layout from '@layouts/Layout.astro'
 import Room from '@components/Room.astro'
+
+import directus from '@api/directus'
+import { readItems } from '@directus/sdk'
+import { Image } from 'astro:assets'
+
+const homePage = await directus.request(
+  readItems('home_page', {
+    fields: ['*'],
+    filter: {
+      // status: {
+      //   _eq: 'published',
+      // },
+    },
+  })
+)
+
+const backgroundImageUrl = `${import.meta.env.PUBLIC_API}/assets/${homePage.featured_image}`;
 export const prerender = true
 ---
 
-<Layout title="Welcome">
+<Layout title={homePage.title}>
   <div class="snap-y">
-    <Welcome />
+    <Welcome headline={homePage.headline} backgroundImageUrl={backgroundImageUrl}/>
     <CastleHill />
 	  <Room />
   </div>
