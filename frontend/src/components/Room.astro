@@ -1,8 +1,17 @@
 ---
 import { Image } from 'astro:assets';
-import Room1 from '@assets/images/room1.webp';
-import Room2 from '@assets/images/room2.webp';
 
+import directus from '@api/directus'
+import { readItems } from '@directus/sdk'
+
+const homePage = await directus.request(
+  readItems('home_page', {
+    fields: ['*'],
+  })
+)
+
+const Room1 = `${import.meta.env.PUBLIC_API}/assets/${homePage.cta_img_1}`
+const Room2 = `${import.meta.env.PUBLIC_API}/assets/${homePage.cta_img_2}`
 ---
 
 
@@ -12,14 +21,10 @@ import Room2 from '@assets/images/room2.webp';
             <div class="bg-primary p-8 md:p-12 lg:px-16 lg:py-24 intersect:animate-fade-up animate-once animate-duration-[1000ms]">
                 <div class="mx-auto max-w-xl text-center">
                     <h2 class="text-2xl font-bold text-white md:text-3xl">
-                        Unwind, Rejuvenate, and Rediscover Your Glow!
+                        {homePage.cta_headline}
                     </h2>
 
-                    <p class="text-white/90 mt-4 ">Whether you want to indulge in a dreamy facial and float away for a little while, or a gorgeous massage to take those aches and pains away… there is something here for everyone.
-                    </p>
-                    <p class="text-white/90 mt-4 ">Please take a look at my treatment menu to see all treatments available, and please don’t hesitate to get in touch if you have any questions at all.
-                    </p>
-                    <p class="text-white/90 mt-4 ">	Have a beautiful day, and I can’t wait to meet you. Chantelle x </p>
+                    <p set:html={homePage.cta_content} />
 
                     <div class="mt-4 md:mt-8">
                         <a
@@ -36,12 +41,16 @@ import Room2 from '@assets/images/room2.webp';
                 <Image
                         alt=""
                         src={Room1}
+                        height={800}
+                        width={400}
                         class="h-40 w-full object-cover sm:h-56 md:h-full"
                 />
 
                 <Image
                         alt=""
                         src={Room2}
+                        height={800}
+                        width={400}
                         class="h-40 w-full object-cover sm:h-56 md:h-full"
                 />
             </div>

@@ -42,7 +42,7 @@ function truncateText(text, limit) {
             treatmentPage.treatments.map(async (treatment) => {
               const fullTreatment = await directus.request(readItem('treatments', treatment.id, { fields: ['*'] }))
               return (
-                <li class="card scale-95 bg-white/60 backdrop-blur transition-all animate-duration-1000 animate-ease-in-out hover:scale-100">
+                <li class="card scale-95 bg-white/60 backdrop-blur transition-all animate-fade-up animate-delay-[1000ms] animate-duration-1000 animate-once animate-ease-in hover:scale-100">
                   <div class="card-body">
                     <h2 class="card-title text-xl font-medium">
                       <span class="mr-3">
