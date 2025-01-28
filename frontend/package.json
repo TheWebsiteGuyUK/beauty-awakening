@@ -14,15 +14,15 @@
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/typography": "^0.5.16",
     "astro": "^5.1.7",
-    "prettier": "^3.4.2",
     "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-tailwindcss": "^0.6.10",
     "tailwindcss": "^3.4.17",
     "tailwindcss-animated": "^1.1.2",
     "tailwindcss-intersect": "^2.0.1",
     "twglow": "^0.0.10"
   },
   "devDependencies": {
-    "daisyui": "^4.12.23"
+    "daisyui": "^4.12.23",
+    "prettier": "^3.4.2",
+    "prettier-plugin-tailwindcss": "^0.6.11"
   }
 }

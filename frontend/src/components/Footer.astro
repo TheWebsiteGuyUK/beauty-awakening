@@ -2,20 +2,18 @@
 import { Image } from 'astro:assets'
 import Beauty from '@assets/images/beauty2.webp'
 
+import directus from '@api/directus'
+import { readItems } from '@directus/sdk'
+import { late } from 'astro:schema'
 const businessInfo = await directus.request(
   readItems('business_info', {
-    fields: ['*'],
-    filter: {
-      // status: {
-      //   _eq: 'published',
-      // },
-    },
+    fields: ['*', 'business_hours'],
   })
 )
 
 const currentYear = new Date().getFullYear();
 ---
-<footer class="relative bg-primary text-gray-50 lg:grid lg:grid-cols-5 pb-10 md:pb-0 intersect:animate-fade-up animate-once animate-duration-[2000ms]">
+<footer class="relative backdrop-blur-sm bg-primary text-gray-50 lg:grid lg:grid-cols-5 pb-10 md:pb-0 intersect:animate-fade-up animate-once animate-duration-[2000ms]">
     <div class="relative block h-32 lg:col-span-2 lg:h-full ">
         <Image
                 src={Beauty}
@@ -31,18 +29,18 @@ const currentYear = new Date().getFullYear();
                     <span class="text-xs uppercase tracking-wide text-gray-100"> Call me </span>
 
                     <a href="#" class="block text-2xl font-medium text-gray-900 hover:opacity-75 sm:text-3xl">
-                        07882 577 263
+                        {businessInfo.contact_number}
                     </a>
                 </p>
 
                 <ul class="mt-8 space-y-1 text-sm ">
-                    <li>Monday - CLOSED</li>
-                    <li>Tuesday - 9:30am - 19:00</li>
-                    <li>Wednesday - 9:30am - 17:00</li>
-                    <li>Thursday - 9:30am - 19:00</li>
-                    <li>Friday - 9:30am - 17:00</li>
-                    <li>Saturday - 9:30am - 13:30</li>
-                    <li>Sunday - CLOSED</li>
+                    {
+                        businessInfo.business_hours.map((item) => (
+                         <li class="fle flex-row gap-3">
+                            {item.day} - {item.availability}
+                         </li>
+                        ))
+                      }
                 </ul>
 
                 <ul class="mt-8 flex gap-6">

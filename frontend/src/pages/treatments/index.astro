@@ -1,13 +1,13 @@
 ---
-
 import Layout from '@layouts/Treatments.astro'
-
+import { Image } from 'astro:assets'
 import TopBar from '@components/TopBar.astro'
+import Treatments from '@components/Treatments.astro'
 
 import directus from '@api/directus'
 import { readItems } from '@directus/sdk'
 
-const homePage = await directus.request(
+const treatmentPage = await directus.request(
   readItems('treatment_page', {
     fields: ['*'],
     filter: {
@@ -19,10 +19,22 @@ const homePage = await directus.request(
 )
 
 
-const treatmentPage = Astro.props
+// const treatmentPage = Astro.props
 const backgroundImageUrl = `${import.meta.env.PUBLIC_API}/assets/${treatmentPage.featured_image}`;
 
+export const prerender = true
 ---
 <Layout title={treatmentPage.title} backgroundImageUrl={backgroundImageUrl}>
-  
+  <div class="h-full snap-center bg-gradient-to-b from-neutral via-white/20 to-neutral backdrop-blur-sm pb-20">
+    <TopBar />
+      <h1
+        class="mx-auto max-w-6xl animate-fade text-wrap text-center text-4xl font-extrabold tracking-tight text-white/90 drop-shadow animate-delay-500 animate-duration-[3000ms] animate-once animate-ease-in text-glow-white/50 md:py-20 md:text-8xl">
+        { treatmentPage.headline }
+      </h1>
+      
+      <ul class="mx-auto grid max-w-screen-2xl grid-cols-2 gap-6 px-3 lg:grid-cols-3">
+        <Treatments />
+      </ul>
+    
+  </div>
 </Layout>
