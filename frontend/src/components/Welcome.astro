@@ -15,19 +15,19 @@ export interface Props {
 const { backgroundImageUrl, headline } = Astro.props
 ---
 
-<div class="h-screen snap-center">
+
   <Image
     src={backgroundImageUrl}
     width={1600}
     height={800}
     alt="Logo"
-    class="h-screen w-full object-cover object-center"
+    class="absolute top-0 h-screen w-full object-cover object-center"
     loading="eager"
   />
-  <div class="absolute top-0 h-dvh w-full bg-gradient-to-b from-neutral via-white/20 to-neutral">
+  <div class=" inline-block relative h-full w-full bg-gradient-to-b from-neutral via-white/20 to-neutral">
     <TopBar />
     <h1
-      class="mx-auto max-w-6xl animate-fade text-wrap text-center text-6xl font-extrabold tracking-tight text-white/90 animate-delay-500 animate-duration-[3000ms] animate-once animate-ease-in text-glow-primary/20 lg:py-20 lg:text-8xl drop-shadow-lg">
+      class="mx-auto max-w-6xl animate-fade text-wrap text-center text-6xl font-extrabold tracking-tight text-white/90 drop-shadow-lg animate-delay-500 animate-duration-[3000ms] animate-once animate-ease-in text-glow-primary/20 lg:py-20 lg:text-8xl">
       {headline}
     </h1>
     <MobileButtons />
@@ -35,4 +35,4 @@ const { backgroundImageUrl, headline } = Astro.props
       <Treatments />
     </ul>
   </div>
-</div>
+

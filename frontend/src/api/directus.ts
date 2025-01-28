@@ -18,6 +18,17 @@ type Page = {
   featured_image: string;
 }
 
+type HomePage = {
+  title: string;
+  headline: string;
+  slug: string;
+  featured_image: string;
+  castle_hill_headline: string;
+  castle_hill_bg_img: string;
+  castle_hill_media: string;
+  castle_hill_content: string;
+}
+
 type BusinessInfo = {
   contact_number: string;
 }
@@ -62,6 +73,7 @@ type Schema = {
   treatments: Treatments[];
   business_info: BusinessInfo;
   treatment_page: TreatmentPage;
+  home_page: HomePage;
 }
 
 const directus = createDirectus<Schema>('http://localhost:8055').with(rest());
