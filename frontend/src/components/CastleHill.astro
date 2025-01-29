@@ -3,47 +3,48 @@ import { Image } from 'astro:assets'
 import Garden from '@assets/images/castle-hill.webp'
 
 export interface Props {
-  castle_hill_headline: string;
-  castle_hill_bg_img: string;
-  castle_hill_media: string;
-  castle_hill_content: string;
+  castle_hill_headline: string
+  castle_hill_bg_img: string
+  castle_hill_media: string
+  castle_hill_content: string
 }
 
 const { castle_hill_bg_img, castle_hill_headline, castle_hill_content, castle_hill_media } = Astro.props
 ---
 
-
-  <h2
-    class="mx-auto max-w-7xl text-wrap px-3  text-center text-4xl font-extrabold tracking-tight text-white/90 drop-shadow animate-duration-[2000ms] animate-once text-glow-primary intersect:animate-fade-up  md:text-7xl py-20 lg:py-40">
-    {castle_hill_headline}
-  </h2>
-  <div class="relative">
-    <Image src={castle_hill_bg_img} width={1600}
-    height={800} alt="Castle Hill Garden" class="h-dvh w-full object-cover object-center" loading="lazy" />
-    <div class="absolute top-0 h-full w-full bg-gradient-to-b from-neutral via-primary/50 to-neutral">
-      <div class="mx-auto max-w-[90dvw] xl:max-w-screen-lg px-3 animate-duration-[1000ms] animate-once intersect:animate-fade-up">
+<div class="intersect:animate-fade-up ">
+     <div
+      class="flex h-full flex-col bg-cover bg-center bg-no-repeat"
+      style={`background-image: url(${castle_hill_bg_img});`}>
+      <div class="relative inline-block h-full w-full bg-neutral/50 backdrop-blur-sm py-20 md:py-40">
+        <h2
+        class="mx-auto max-w-7xl text-wrap px-3 text-center text-4xl font-extrabold tracking-tight text-white/90 drop-shadow animate-duration-[2000ms] animate-once text-glow-primary intersect:animate-fade-up md:text-7xl">
+        {castle_hill_headline}
+      </h2>
         <div
-          class="flex flex-col items-center justify-between gap-10 rounded bg-white/50 p-6 backdrop-blur-sm md:flex-row">
-          <div class="">
-            <div class="flex flex-col justify-between gap-6 px-3">
-              <article
-                class="flex w-full flex-col gap-6 text-pretty px-0 text-center text-2xl md:w-96 md:px-3 md:text-left xl:text-4xl">
-                <p set:html={castle_hill_content} />
-              </article>
-              <div class="flex flex-row justify-center gap-6 px-0 md:px-3 lg:justify-start">
-                <a href=""><button class="btn btn-primary"> Book now</button></a>
-                <a href="/treatments"><button class="btn btn-neutral"> View treatments</button></a>
+          class="mx-auto max-w-[90dvw] px-3 animate-duration-[1000ms] animate-once intersect:animate-fade-up xl:max-w-screen-lg py-20">
+          <div
+            class="flex flex-col items-center justify-between gap-10 rounded bg-white/50 p-6 backdrop-blur-sm md:flex-row">
+            <div class="">
+              <div class="flex flex-col justify-between gap-6 px-3">
+                <article
+                  class="flex w-full flex-col gap-6 text-pretty px-0 text-center text-2xl md:w-96 md:px-3 md:text-left xl:text-4xl">
+                  <p set:html={castle_hill_content} />
+                </article>
+                <div class="flex flex-row justify-center gap-6 px-0 md:px-3 lg:justify-start">
+                  <a href=""><button class="btn btn-primary"> Book now</button></a>
+                  <a href="/treatments"><button class="btn btn-neutral"> View treatments</button></a>
+                </div>
               </div>
             </div>
-          </div>
-          <div>
-            <video controls autoplay loop muted width="360" height="640" class="rounded">
-              <source src={castle_hill_media} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+            <div>
+              <video controls autoplay loop muted width="360" height="640" class="rounded">
+                <source src={castle_hill_media} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-
+</div>

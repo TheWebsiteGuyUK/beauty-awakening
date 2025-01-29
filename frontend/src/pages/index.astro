@@ -1,7 +1,7 @@
 ---
 import CastleHill from '@components/CastleHill.astro'
 import Welcome from '@components/Welcome.astro'
-import Layout from '@layouts/Layout.astro'
+import Layout from '@layouts/BaseLayout.astro'
 import Room from '@components/Room.astro'
 import Footer from '@components/Footer.astro'
 import MobileNav from '@components/MobileNav.astro'
@@ -22,12 +22,12 @@ const castleHillMedia = `${import.meta.env.PUBLIC_API}/assets/${homePage.castle_
 export const prerender = true
 ---
 
-<Layout title={homePage.title}>
-  <div class="flex min-h-dvh flex-col">
+<Layout title={homePage.title} backgroundImageUrl={backgroundImageUrl}>
+  
     <div class="relative flex-grow">
-      <Welcome headline={homePage.headline} backgroundImageUrl={backgroundImageUrl} />
+      <Welcome headline={homePage.headline}  />
 
-      <div class="relative flex-grow">
+      <div class="relative flex-grow bg-neutral py-20">
         <CastleHill
           castle_hill_bg_img={castleHillImage}
           castle_hill_headline={homePage.castle_hill_headline}
@@ -35,14 +35,11 @@ export const prerender = true
           castle_hill_media={castleHillMedia}
         />
       </div>
-      <div class="flex-grow relative py-10">
+      <div class="flex-grow relative py-10 bg-neutral" >
         <Room />
       </div>
     </div>
 
-    <div class="bg-neutral backdrop-blur-sm">
-      <Footer />
-    </div>
-    <MobileNav />
-  </div>
+  
+  
 </Layout>

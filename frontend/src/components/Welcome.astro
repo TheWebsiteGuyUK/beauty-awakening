@@ -16,15 +16,15 @@ const { backgroundImageUrl, headline } = Astro.props
 ---
 
 
-  <Image
+  <!-- <Image
     src={backgroundImageUrl}
     width={1600}
     height={800}
     alt="Logo"
-    class="absolute top-0 h-screen w-full object-cover object-center"
+    class="absolute top-0 h-full w-full  object-center object-contain"
     loading="eager"
-  />
-  <div class=" inline-block relative h-full w-full bg-gradient-to-b from-neutral via-white/20 to-neutral">
+  /> -->
+  <div class=" h-full w-full bg-gradient-to-b from-neutral via-white/20 to-neutral py-10">
     <TopBar />
     <h1
       class="mx-auto max-w-6xl animate-fade text-wrap text-center text-6xl font-extrabold tracking-tight text-white/90 drop-shadow-lg animate-delay-500 animate-duration-[3000ms] animate-once animate-ease-in text-glow-primary/20 lg:py-20 lg:text-8xl">

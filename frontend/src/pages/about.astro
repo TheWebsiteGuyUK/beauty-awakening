@@ -19,7 +19,9 @@ const backgroundImageUrl = `${import.meta.env.PUBLIC_API}/assets/${aboutPage.fea
 
 <Layout title={aboutPage.title} backgroundImageUrl={backgroundImageUrl}>
     <div class="h-full pb-20 bg-neutral/40 backdrop-blur-md">
-      <TopBar />
+      <div class="bg-gradient-to-b from-neutral via-neutral/90 to-neautral/80">
+        <TopBar />
+      </div>
        <div class="p-3">
         <div class="container max-w-screen-xl mx-auto p-3 rounded-lg bg-white/50 backdrop-blur-lg">
             <h1
