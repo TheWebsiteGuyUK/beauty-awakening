@@ -16,9 +16,9 @@ services:
             DB_CLIENT: "sqlite3"
             DB_FILENAME: "/database/data.db"
             WEBSOCKETS_ENABLED: "true"
-            HOST: "0.0.0.0"
+            HOST: ${HOST}
             PORT: "8055"
-            PUBLIC_URL: "http://localhost:8055"
+            PUBLIC_URL: ${PUBLIC_URL}
             LOG_LEVEL: "info"
             LOG_STYLE: "pretty"
             MAX_PAYLOAD_SIZE: "1mb"
@@ -62,7 +62,7 @@ services:
             EMAIL_TRANSPORT: "smtp"
             EMAIL_SENDMAIL_NEW_LINE: "unix"
             EMAIL_SENDMAIL_PATH: "/usr/sbin/sendmail"
-            EMAIL_SMTP_HOST: "mail.stackmail.com"
+            EMAIL_SMTP_HOST: ${EMAIL_SMTP_HOST}
             EMAIL_SMTP_PORT: "465"
             EMAIL_SMTP_SECURE: "true"
             EMAIL_SMTP_USER: ${EMAIL_SMTP_USER}
