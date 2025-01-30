@@ -19,18 +19,20 @@ const backgroundImageUrl = `${import.meta.env.PUBLIC_API}/assets/${termsPage.bac
 ---
 
 <Layout title={termsPage.title} backgroundImageUrl={backgroundImageUrl}>
-    <div class="h-full pb-20 bg-neutral/40 backdrop-blur-md">
+    <div class="h-full pb-20 bg-neutral/50">
       <TopBar />
-       <div class="p-3">
-        <div class="container max-w-screen-xl mx-auto p-3 rounded-lg bg-neutral/50 backdrop-blur-lg">
+       <div class="p-3 min-h-[80dvh]">
+        <div class="container max-w-screen-xl mx-auto p-3">
             <h1
-            class="mx-auto max-w-6xl animate-fade text-wrap text-center text-4xl font-bold tracking-tight text-white/90 drop-shadow  animate-once animate-ease-in   md:text-6xl py-6">
+            class="mx-auto max-w-6xl  text-wrap text-center text-4xl font-bold tracking-tight text-white/90 drop-shadow   md:text-6xl py-6 font-hand">
             { termsPage.title }
           </h1>
           
-          <article class="prose prose-xl max-w-none p-6">
+          <div class="bg-white/80">
+            <article class="prose prose-xl max-w-none p-6">
               <p set:html={termsPage.content}/>
           </article>
+          </div>
            </div>
        </div>
       

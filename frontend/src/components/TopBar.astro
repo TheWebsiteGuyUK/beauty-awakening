@@ -17,12 +17,12 @@ const treatmentPages = await directus.request(
 ---
 <div class="flex justify-between text-lg items-center">
 
-	<ul class="hidden menu xl:menu-horizontal mx-auto gap-20">
+	<ul class="hidden menu xl:menu-horizontal mx-auto gap-20 font-hand text-2xl">
 		<li><a>About</a></li>
 		<li>
 		  <details>
 			<summary><a href="/treatments">Treatments</a></summary>
-			<ul class="w-60 z-50">
+			<ul class="w-60 z-50 font-sans text-lg">
 				{
 					treatmentPages.map((treatmentPage) => (
 						<li><a href={`/treatments/${treatmentPage.slug}`} data-astro-prefetch="tap">{treatmentPage.headline}</a></li>
@@ -38,7 +38,7 @@ const treatmentPages = await directus.request(
 			<Image src={Logo} alt="Logo" class="max-w-xs md:max-w-lg p-6 drop-shadow-sm"  loading="eager" />
 		</picture>
 	</a>
-	<ul class="hidden menu xl:menu-horizontal mx-auto gap-20">
+	<ul class="hidden menu xl:menu-horizontal mx-auto gap-20 font-hand text-2xl">
 		<li><a href="/contact">Contact</a></li>
 		<li><a>Appointments</a></li>
 	  </ul>

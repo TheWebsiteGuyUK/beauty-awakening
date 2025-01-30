@@ -27,13 +27,13 @@ function truncateText(text, limit) {
 }
 ---
 <Layout title={treatmentPage.title} backgroundImageUrl={backgroundImageUrl}>
-  <div class="h-full w-full bg-gradient-to-b from-neutral via-white/20 to-neutral backdrop-blur-sm">
+  <div class="h-full w-full backdrop-blur-sm bg-neutral/40">
     <TopBar />
     <header class="mx-auto max-w-6xl text-center">
-      <h1 class="animate-fade text-wrap text-center text-2xl font-bold tracking-tight text-white/90 drop-shadow animate-duration-[1000ms] animate-once animate-ease-in text-glow-white/50 md:text-6xl">
+      <h1 class=" text-wrap text-center text-4xl font-bold tracking-tight text-white/90 drop-shadow animate-duration-[1000ms] animate-once animate-ease-in text-glow-white/50 md:text-6xl font-hand">
         {treatmentPage.headline}
       </h1>
-      <p class="py-10">{treatmentPage.excerpt}</p>
+      <p class="py-10 px-3 text-sm">{treatmentPage.excerpt}</p>
     </header>
     <div class="mx-auto max-w-screen-2xl min-h-[60dvh]">
       <ul class="grid grid-cols-1 gap-3 p-3 md:grid-cols-2 xl:grid-cols-3 pb-40">
@@ -42,7 +42,7 @@ function truncateText(text, limit) {
             treatmentPage.treatments.map(async (treatment) => {
               const fullTreatment = await directus.request(readItem('treatments', treatment.id, { fields: ['*'] }))
               return (
-                <li class="card scale-95 bg-white/60 backdrop-blur transition-all animate-fade animate-delay-[1000ms] animate-duration-1000 animate-once animate-ease-in hover:scale-100">
+                <li class="card scale-95 bg-white/60 backdrop-blur transition-all intersect:animate-fade-up animate-delay-500 animate-duration-1000 animate-once animate-ease-in hover:scale-100">
                   <div class="card-body">
                     <h2 class="card-title text-xl font-medium">
                       <span class="mr-3">

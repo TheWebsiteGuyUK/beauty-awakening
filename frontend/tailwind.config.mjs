@@ -2,7 +2,11 @@
 export default {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
-		extend: {},
+		extend: {
+			fontFamily: {
+				'hand': ['"gelato-fresco-variable"', 'sans-serif' ],
+			}
+		},
 	},
 	daisyui: {
 		themes: [
@@ -26,3 +30,4 @@ export default {
 		require('daisyui'),
 	],
 }
+

@@ -9,6 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/node": "^9.0.2",
     "@astrojs/tailwind": "^5.1.4",
     "@directus/sdk": "^18.0.3",
     "@tailwindcss/forms": "^0.5.10",

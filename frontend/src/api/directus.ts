@@ -76,6 +76,6 @@ type Schema = {
   home_page: HomePage;
 }
 
-const directus = createDirectus<Schema>('http://localhost:8055').with(rest());
+const directus = createDirectus<Schema>(import.meta.env.PUBLIC_API).with(rest());
 
 export default directus;

@@ -25,14 +25,14 @@ const backgroundImageUrl = `${import.meta.env.PUBLIC_API}/assets/${treatmentPage
 export const prerender = true
 ---
 <Layout title={treatmentPage.title} backgroundImageUrl={backgroundImageUrl}>
-  <div class="h-full snap-center bg-gradient-to-b from-neutral via-white/20 to-neutral backdrop-blur-sm pb-20 ">
+  <div class="h-full snap-center bg-neutral/40 backdrop-blur-xs md:pb-20 ">
     <TopBar />
       <h1
-        class="mx-auto max-w-6xl animate-fade text-wrap text-center text-4xl font-extrabold tracking-tight text-white/90 drop-shadow animate-delay-500 animate-duration-[3000ms] animate-once animate-ease-in text-glow-white/50 md:py-20 md:text-8xl">
+        class="mx-auto max-w-6xl font-hand text-wrap text-center text-4xl font-bold tracking-tight text-white/90 drop-shadow animate-delay-100 animate-duration-1000 animate-once animate-ease-in text-glow-white/50 md:mt-10 md:text-8xl">
         { treatmentPage.headline }
       </h1>
       
-      <ul class="mx-auto grid max-w-screen-2xl grid-cols-2 gap-6 px-3 lg:grid-cols-3 py-10 md:py-20">
+      <ul class="mx-auto grid max-w-screen-2xl grid-cols-2 gap-6 px-3 lg:grid-cols-3 py-10 md:py-10">
         <Treatments />
       </ul>
     
