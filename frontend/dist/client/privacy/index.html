@@ -29,8 +29,8 @@
                         </li> --> </ul> </div> </div> </div> <div class="mt-12 border-t border-gray-100 pt-12"> <div class="sm:flex sm:items-center sm:justify-between"> <ul class="flex flex-wrap gap-4 text-xs"> <li> <a href="/privacy" class="text-gray-100 transition hover:opacity-75"> Privacy Policy </a> </li> </ul> <p class="mt-8 text-xs text-gray-100 sm:mt-0">
 &copy; 2025. Beauty Awakening by Chantelle. All rights reserved.
 </p> </div> </div> </div> </footer> </div> <div class="btm-nav bg-neutral text-neutral-800 btm-nav-lg lg:hidden transition-all duration-500 ease-in-out divide-x divide-white/25 border-t border-neutral-200 z-50"> <a href="/treatments"> <button class="flex flex-col items-center"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 fill-white"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg> <span class="btm-nav-label">Treatments</span> </button> </a> <a href="/bookings"> <button class="flex flex-col items-center"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 fill-white"><path d="M21 7.5V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3.5"></path><path d="M16 2v4"></path><path d="M8 2v4"></path><path d="M3 10h5"></path><path d="M17.5 17.5 16 16.3V14"></path><circle cx="16" cy="16" r="6"></circle></svg> <span class="btm-nav-label">Bookings</span> </button> </a> <a href="/contact"> <button class="flex flex-col items-center"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 fill-white"><path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2z"></path><path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"></path></svg> <span class="btm-nav-label">Contact</span> </button> </a> </div> <script>
-  let lastScrollTop = 0; // Store the last scroll position
-  const navbar = document.querySelector('.btm-nav'); // Select the navbar
+  let lastScrollTop = 0;
+  const navbar = document.querySelector('.btm-nav');
 
   // Initially hide the navbar
   navbar.classList.add('bottom-[-100px]');
@@ -42,12 +42,16 @@
       // Scrolling down, hide the navbar
       navbar.classList.remove('bottom-0');
       navbar.classList.add('bottom-[-100px]');
-    } else if (currentScroll > 0) {
-      // Scrolling up or starting to scroll, show the navbar
+    } else if (currentScroll < lastScrollTop && currentScroll > 0) { // Check for UP scroll AND not at the top
+      // Scrolling up, show the navbar
       navbar.classList.remove('bottom-[-100px]');
       navbar.classList.add('bottom-0');
+    } else if (currentScroll <= 0) {
+      // At the very top, hide the navbar regardless of scroll direction
+      navbar.classList.remove('bottom-0');
+      navbar.classList.add('bottom-[-100px]');
     }
 
-    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Prevent negative scroll values
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
   });
 </script> </div> <script defer src="https://unpkg.com/tailwindcss-intersect@2.x.x/dist/observer.min.js"></script></body></html>

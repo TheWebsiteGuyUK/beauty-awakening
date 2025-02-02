@@ -20,8 +20,8 @@
 </div>
 
 <script is:inline>
-  let lastScrollTop = 0; // Store the last scroll position
-  const navbar = document.querySelector('.btm-nav'); // Select the navbar
+  let lastScrollTop = 0;
+  const navbar = document.querySelector('.btm-nav');
 
   // Initially hide the navbar
   navbar.classList.add('bottom-[-100px]');
@@ -33,13 +33,17 @@
       // Scrolling down, hide the navbar
       navbar.classList.remove('bottom-0');
       navbar.classList.add('bottom-[-100px]');
-    } else if (currentScroll > 0) {
-      // Scrolling up or starting to scroll, show the navbar
+    } else if (currentScroll < lastScrollTop && currentScroll > 0) { // Check for UP scroll AND not at the top
+      // Scrolling up, show the navbar
       navbar.classList.remove('bottom-[-100px]');
       navbar.classList.add('bottom-0');
+    } else if (currentScroll <= 0) {
+      // At the very top, hide the navbar regardless of scroll direction
+      navbar.classList.remove('bottom-0');
+      navbar.classList.add('bottom-[-100px]');
     }
 
-    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Prevent negative scroll values
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
   });
 </script>
 
