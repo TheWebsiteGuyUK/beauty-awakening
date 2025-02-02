@@ -5,11 +5,9 @@ import Layout from '@layouts/Layout.astro'
 import Treatments from '@components/Treatments.astro'
 import Room from '@components/Room.astro'
 import Footer from '@components/Footer.astro'
-import MobileNav from '@components/MobileNav.astro'
 
 import directus from '@api/directus'
 import { readItems } from '@directus/sdk'
-import { Image } from 'astro:assets'
 
 const homePage = await directus.request(
   readItems('home_page', {
@@ -29,12 +27,12 @@ export const prerender = true
 ---
 
 <Layout title={homePage.title}>
-  <div class="y">
-    <section class="h-dvh">
+  <div class="snap-y snap-mandatory overflow-y-scroll scroll-smooth "> 
+    <section class="snap-start h-dvh"> 
       <Welcome headline={homePage.headline} backgroundImageUrl={backgroundImageUrl} />
     </section>
-    <section id="about">
-      <div class="relative flex-grow bg-primary">
+    <section id="about" class="snap-start"> 
+      <div class="relative flex-grow bg-primary"> {/* Consider adding h-screen if needed */}
         <CastleHill
           castle_hill_bg_img={castleHillImage}
           castle_hill_headline={homePage.castle_hill_headline}
@@ -43,21 +41,25 @@ export const prerender = true
         />
       </div>
     </section>
-    <section class=" bg-gradient-to-b from-primary to-neutral pb-20 relative" id="treatments">
-      <header class="py-10 text-center">
-        <h2 class="text-4xl font-semibold text-neutral font-hand animate-duration-1000 animate-once animate-ease-in intersect:animate-fade-up">{treatmentsPage.headline}</h2>
-        <p>{treatmentsPage.intro}</p>
-      </header>
-      <ul class="mx-auto grid max-w-screen-2xl grid-cols-1 sm:grid-cols-2 gap-6 px-3 lg:grid-cols-3">
-        <Treatments />
-      </ul>
+    <section class="relative bg-gradient-to-b from-primary to-neutral pb-20 snap-start" id="treatments"> 
+      <div class="h-full"> 
+        <header class="py-10 text-center">
+          <h2 class="font-hand text-4xl font-semibold text-neutral animate-duration-1000 animate-once animate-ease-in intersect:animate-fade-up">
+            {treatmentsPage.headline}
+          </h2>
+          <p>{treatmentsPage.intro}</p>
+        </header>
+        <ul class="mx-auto grid max-w-screen-2xl grid-cols-1 gap-6 px-3 sm:grid-cols-2 lg:grid-cols-3">
+          <Treatments />
+        </ul>
+      </div>
     </section>
 
-    <section>
+    <section class="snap-start">
       <Room />
     </section>
-    
-    <section>
+
+    <section class="snap-start"> 
       <Footer />
     </section>
   </div>
