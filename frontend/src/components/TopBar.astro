@@ -14,6 +14,8 @@ const treatmentPages = await directus.request(
   })
 )
 
+const Logo = `${import.meta.env.PUBLIC_API}/assets/9142bbd9-d2d2-4ed1-b95d-b6f9662de5cc/logo.webp}`
+
 ---
 <div class="flex justify-between text-lg items-center">
 
@@ -35,7 +37,7 @@ const treatmentPages = await directus.request(
 	  </ul>
 	<a href="/" class="mx-auto">
 		<picture>
-			<Image src={Logo} alt="Logo" class="max-w-xs md:max-w-lg p-6 drop-shadow-sm"  loading="eager" />
+			<Image src={Logo} alt="Logo" width={800} height={600} class="max-w-sm md:max-w-lg p-6 drop-shadow-lg"  loading="eager" />
 		</picture>
 	</a>
 	<ul class="hidden menu xl:menu-horizontal mx-auto gap-20 font-hand text-2xl">

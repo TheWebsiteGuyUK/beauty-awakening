@@ -12,11 +12,11 @@ export interface Props {
 const { castle_hill_bg_img, castle_hill_headline, castle_hill_content, castle_hill_media } = Astro.props
 ---
 
-<div class="intersect:animate-fade-up animate-duration-1000 animate-delay-100">
+<div class="intersect:animate-fade-up animate-duration-1000 animate-delay-100 bg-primary">
      <div
       class="flex h-full flex-col bg-cover bg-center bg-no-repeat"
       style={`background-image: url(${castle_hill_bg_img});`}>
-      <div class="relative inline-block h-full w-full bg-neutral/50 backdrop-blur-sm py-20 md:py-40">
+      <div class="relative inline-block h-full w-full bg-gradient-to-b from-primary via-neutral/50 to-primary backdrop-blur-sm py-10">
         <h2
         class="mx-auto max-w-7xl text-wrap px-3 text-center text-4xl font-extrabold tracking-tight text-white/90 drop-shadow animate-duration-[2000ms] animate-once text-glow-primary intersect:animate-fade-up md:text-7xl">
         {castle_hill_headline}

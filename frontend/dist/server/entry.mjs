@@ -1,6 +1,6 @@
 import { renderers } from './renderers.mjs';
-import { c as createExports, s as serverEntrypointModule } from './chunks/_@astrojs-ssr-adapter_D7XbSp5N.mjs';
-import { manifest } from './manifest_F65__xhj.mjs';
+import { c as createExports, s as serverEntrypointModule } from './chunks/_@astrojs-ssr-adapter_DhBU0s4G.mjs';
+import { manifest } from './manifest_D9qZdPCV.mjs';
 
 const serverIslandMap = new Map();;
 
@@ -27,8 +27,8 @@ const _manifest = Object.assign(manifest, {
 });
 const _args = {
     "mode": "standalone",
-    "client": "file:///var/www/projects/beauty-awakening/frontend/dist/client/",
-    "server": "file:///var/www/projects/beauty-awakening/frontend/dist/server/",
+    "client": "file:///D:/Github/beauty-awakening/frontend/dist/client/",
+    "server": "file:///D:/Github/beauty-awakening/frontend/dist/server/",
     "host": false,
     "port": 4321,
     "assets": "_astro"

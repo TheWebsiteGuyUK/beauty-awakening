@@ -15,30 +15,26 @@ const treatmentPages = await directus.request(
 )
 ---
 
-
-  {
-    treatmentPages.map((treatmentPage) => (
-
-        <li class="inset-ring inset-ring-white/20 h-full intersect:animate-fade-up rounded-lg bg-white/20 p-3 shadow-xl backdrop-blur animate-delay-[1000ms] animate-duration-1000 animate-once animate-ease-in lg:p-6">
-            <a href={`/treatments/${treatmentPage.slug}`} data-astro-prefetch="tap">
-            <Image
-            class="mb-3 h-12 sm:h-20 w-full rounded object-cover object-center lg:mb-6 lg:h-40"
-            src={`${import.meta.env.PUBLIC_API}/assets/${treatmentPage.featured_image}`}
-            alt="content"
-            loading="eager"
-            width={600}
-            height={200}
-          />
-          <h3 class="title-font text-xs sm:text-sm font-medium uppercase tracking-tight text-white">{treatmentPage.headline}</h3>
-          <h2 class="title-font hidden text-lg font-medium text-gray-900 md:block lg:mb-4">
-            {treatmentPage.subheadline}
-          </h2>
-          <p class="hidden leading-relaxed text-gray-800 xl:block">
-            {treatmentPage.excerpt}
-          </p>
+{
+  treatmentPages.map((treatmentPage) => (
+    <li class="inset-ring inset-ring-white/20 h-full rounded-lg bg-white/20 p-3 shadow-xl backdrop-blur animate-duration-1000 animate-once animate-ease-in intersect:animate-fade-up lg:p-6">
+      <a href={`/treatments/${treatmentPage.slug}`} data-astro-prefetch="tap">
+        <Image
+          class="mb-3 h-20 w-full rounded object-cover object-center lg:mb-6 lg:h-40"
+          src={`${import.meta.env.PUBLIC_API}/assets/${treatmentPage.featured_image}`}
+          alt="content"
+          loading="eager"
+          width={600}
+          height={200}
+        />
+        <h3 class="title-font text-xs font-medium uppercase tracking-tight text-neutral-500 sm:text-sm">
+          {treatmentPage.headline}
+        </h3>
+        <h2 class="title-font text-md sm:text-lg font-medium tracking-tight text-gray-900  lg:mb-4">
+          {treatmentPage.subheadline}
+        </h2>
+        <p class="hidden leading-relaxed text-gray-800 xl:block">{treatmentPage.excerpt}</p>
       </a>
-        </li>
-
-    ))
-  }
-
+    </li>
+  ))
+}

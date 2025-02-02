@@ -1,7 +1,8 @@
 ---
 import CastleHill from '@components/CastleHill.astro'
 import Welcome from '@components/Welcome.astro'
-import Layout from '@layouts/BaseLayout.astro'
+import Layout from '@layouts/Layout.astro'
+import Treatments from '@components/Treatments.astro'
 import Room from '@components/Room.astro'
 import Footer from '@components/Footer.astro'
 import MobileNav from '@components/MobileNav.astro'
@@ -16,18 +17,24 @@ const homePage = await directus.request(
   })
 )
 
+const treatmentsPage = await directus.request(
+  readItems('treatment_page', {
+    fields: ['*'],
+  })
+)
 const backgroundImageUrl = `${import.meta.env.PUBLIC_API}/assets/${homePage.featured_image}`
 const castleHillImage = `${import.meta.env.PUBLIC_API}/assets/${homePage.castle_hill_bg_img}`
 const castleHillMedia = `${import.meta.env.PUBLIC_API}/assets/${homePage.castle_hill_media}`
 export const prerender = true
 ---
 
-<Layout title={homePage.title} backgroundImageUrl={backgroundImageUrl}>
-  
-    <div class="relative flex-grow">
-      <Welcome headline={homePage.headline}  />
-
-      <div class="relative flex-grow bg-neutral py-20">
+<Layout title={homePage.title}>
+  <div class="y">
+    <section class="h-dvh">
+      <Welcome headline={homePage.headline} backgroundImageUrl={backgroundImageUrl} />
+    </section>
+    <section id="about">
+      <div class="relative flex-grow bg-primary">
         <CastleHill
           castle_hill_bg_img={castleHillImage}
           castle_hill_headline={homePage.castle_hill_headline}
@@ -35,11 +42,23 @@ export const prerender = true
           castle_hill_media={castleHillMedia}
         />
       </div>
-      <div class="flex-grow relative py-10 bg-neutral" >
-        <Room />
-      </div>
-    </div>
+    </section>
+    <section class=" bg-gradient-to-b from-primary to-neutral pb-20 relative" id="treatments">
+      <header class="py-10 text-center">
+        <h2 class="text-4xl font-semibold text-neutral font-hand animate-duration-1000 animate-once animate-ease-in intersect:animate-fade-up">{treatmentsPage.headline}</h2>
+        <p>{treatmentsPage.intro}</p>
+      </header>
+      <ul class="mx-auto grid max-w-screen-2xl grid-cols-1 sm:grid-cols-2 gap-6 px-3 lg:grid-cols-3">
+        <Treatments />
+      </ul>
+    </section>
 
-  
-  
+    <section>
+      <Room />
+    </section>
+    
+    <section>
+      <Footer />
+    </section>
+  </div>
 </Layout>
