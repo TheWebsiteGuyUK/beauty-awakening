@@ -17,7 +17,7 @@ const treatmentPages = await directus.request(
 
 {
   treatmentPages.map((treatmentPage) => (
-    <li class="inset-ring inset-ring-white/20 h-full rounded-lg bg-white/20 p-3 shadow-xl backdrop-blur intersect:animate delay-1000 intersect:animate-duration-1000 intersect:animate-once animate-ease-in intersect:animate-fade-up lg:p-6">
+    <li class="inset-ring inset-ring-white/20 h-full rounded-lg bg-white/20 p-3 shadow-xl backdrop-blur intersect:animate delay-1000 intersect:animate-duration-1000 intersect:animate-once  intersect:animate-fade lg:p-6">
       <a href={`/treatments/${treatmentPage.slug}`} data-astro-prefetch="tap">
         <Image
           class="mb-3 h-20 w-full rounded object-cover object-center lg:mb-6 lg:h-40"
