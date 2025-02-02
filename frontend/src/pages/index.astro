@@ -31,7 +31,7 @@ export const prerender = true
     <section class=" inset-0" id="welcome"> 
       <Welcome headline={homePage.headline} backgroundImageUrl={backgroundImageUrl} />
     </section>
-    <section id="about" class="snap-start"> 
+    <section id="about" class="inset-0"> 
       <div class="relative flex-grow bg-primary"> {/* Consider adding h-screen if needed */}
         <CastleHill
           castle_hill_bg_img={castleHillImage}
@@ -41,8 +41,8 @@ export const prerender = true
         />
       </div>
     </section>
-    <section class="relative bg-gradient-to-b from-primary to-neutral pb-40 " id="treatments"> 
-      <div class="h-full"> 
+    <section class="inset-0 relative  pb-40 " id="treatments"> 
+      <div class="h-full bg-gradient-to-b from-primary to-neutral"> 
         <header class="py-10 text-center">
           <h2 class="font-hand text-4xl lg:text-6xl font-semibold text-neutral intersect:animate-duration-1000 intersect:animate-ease-in intersect:animate-fade">
             {treatmentsPage.headline}
