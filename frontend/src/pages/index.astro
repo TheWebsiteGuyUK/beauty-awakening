@@ -28,11 +28,11 @@ export const prerender = true
 
 <Layout title={homePage.title}>
   
-    <section class=" inset-0" id="welcome"> 
+    <section class="" id="welcome"> 
       <Welcome headline={homePage.headline} backgroundImageUrl={backgroundImageUrl} />
     </section>
-    <section id="about" class="inset-0"> 
-      <div class="relative flex-grow bg-primary"> {/* Consider adding h-screen if needed */}
+    <section id="about" class="relative"> 
+      <div class="relative flex-grow bg-primary"> 
         <CastleHill
           castle_hill_bg_img={castleHillImage}
           castle_hill_headline={homePage.castle_hill_headline}

@@ -17,6 +17,7 @@
       "@layouts/*": ["./src/layouts/*"],
       "@api/*": ["./src/api/*"],
       "@content/*": ["./src/content/*"],
+      "@styles/*": ["./src/styles/*"],
     },
   }
 }

@@ -10,19 +10,20 @@
   },
   "dependencies": {
     "@astrojs/node": "^9.0.2",
-    "@astrojs/tailwind": "^5.1.4",
-    "@directus/sdk": "^18.0.3",
-    "@tailwindcss/forms": "^0.5.10",
+    "@astrojs/tailwind": "^6.0.0",
+    "@directus/sdk": "^19.0.1",
+    "@tailwindcss/postcss": "^4.0.3",
     "@tailwindcss/typography": "^0.5.16",
-    "astro": "^5.1.7",
+    "@tailwindcss/vite": "^4.0.3",
+    "astro": "^5.2.5",
     "prettier-plugin-astro": "^0.14.1",
-    "tailwindcss": "^3.4.17",
-    "tailwindcss-animated": "^1.1.2",
-    "tailwindcss-intersect": "^2.0.1",
+    "tailwindcss": "^4.0.3",
+    "tailwindcss-animated": "^2.0.0",
+    "tailwindcss-intersect": "^2.1.0",
     "twglow": "^0.0.10"
   },
   "devDependencies": {
-    "daisyui": "^4.12.23",
+    "daisyui": "^5.0.0-beta.6",
     "prettier": "^3.4.2",
     "prettier-plugin-tailwindcss": "^0.6.11"
   }

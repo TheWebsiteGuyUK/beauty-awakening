@@ -4,7 +4,7 @@ import { escape } from 'html-escaper';
 import { decodeBase64, encodeHexUpperCase, encodeBase64, decodeHex } from '@oslojs/encoding';
 import 'cssesc';
 
-const ASTRO_VERSION = "5.1.7";
+const ASTRO_VERSION = "5.2.5";
 const REROUTE_DIRECTIVE_HEADER = "X-Astro-Reroute";
 const REWRITE_DIRECTIVE_HEADER_KEY = "X-Astro-Rewrite";
 const REWRITE_DIRECTIVE_HEADER_VALUE = "yes";
@@ -359,54 +359,6 @@ class AstroError extends Error {
   }
 }
 
-async function renderEndpoint(mod, context, isPrerendered, logger) {
-  const { request, url } = context;
-  const method = request.method.toUpperCase();
-  const handler = mod[method] ?? mod["ALL"];
-  if (isPrerendered && method !== "GET") {
-    logger.warn(
-      "router",
-      `${url.pathname} ${bold(
-        method
-      )} requests are not available in static endpoints. Mark this page as server-rendered (\`export const prerender = false;\`) or update your config to \`output: 'server'\` to make all your pages server-rendered by default.`
-    );
-  }
-  if (handler === undefined) {
-    logger.warn(
-      "router",
-      `No API Route handler exists for the method "${method}" for the route "${url.pathname}".
-Found handlers: ${Object.keys(mod).map((exp) => JSON.stringify(exp)).join(", ")}
-` + ("all" in mod ? `One of the exported handlers is "all" (lowercase), did you mean to export 'ALL'?
-` : "")
-    );
-    return new Response(null, { status: 404 });
-  }
-  if (typeof handler !== "function") {
-    logger.error(
-      "router",
-      `The route "${url.pathname}" exports a value for the method "${method}", but it is of the type ${typeof handler} instead of a function.`
-    );
-    return new Response(null, { status: 500 });
-  }
-  let response = await handler.call(mod, context);
-  if (!response || response instanceof Response === false) {
-    throw new AstroError(EndpointDidNotReturnAResponse);
-  }
-  if (REROUTABLE_STATUS_CODES.includes(response.status)) {
-    try {
-      response.headers.set(REROUTE_DIRECTIVE_HEADER, "no");
-    } catch (err) {
-      if (err.message?.includes("immutable")) {
-        response = new Response(response.body, response);
-        response.headers.set(REROUTE_DIRECTIVE_HEADER, "no");
-      } else {
-        throw err;
-      }
-    }
-  }
-  return response;
-}
-
 function validateArgs(args) {
   if (args.length !== 3) return false;
   if (!args[0] || typeof args[0] !== "object") return false;
@@ -470,6 +422,54 @@ function createAstro(site) {
     generator: `Astro v${ASTRO_VERSION}`,
     glob: createAstroGlobFn()
   };
+}
+
+async function renderEndpoint(mod, context, isPrerendered, logger) {
+  const { request, url } = context;
+  const method = request.method.toUpperCase();
+  const handler = mod[method] ?? mod["ALL"];
+  if (isPrerendered && method !== "GET") {
+    logger.warn(
+      "router",
+      `${url.pathname} ${bold(
+        method
+      )} requests are not available in static endpoints. Mark this page as server-rendered (\`export const prerender = false;\`) or update your config to \`output: 'server'\` to make all your pages server-rendered by default.`
+    );
+  }
+  if (handler === undefined) {
+    logger.warn(
+      "router",
+      `No API Route handler exists for the method "${method}" for the route "${url.pathname}".
+Found handlers: ${Object.keys(mod).map((exp) => JSON.stringify(exp)).join(", ")}
+` + ("all" in mod ? `One of the exported handlers is "all" (lowercase), did you mean to export 'ALL'?
+` : "")
+    );
+    return new Response(null, { status: 404 });
+  }
+  if (typeof handler !== "function") {
+    logger.error(
+      "router",
+      `The route "${url.pathname}" exports a value for the method "${method}", but it is of the type ${typeof handler} instead of a function.`
+    );
+    return new Response(null, { status: 500 });
+  }
+  let response = await handler.call(mod, context);
+  if (!response || response instanceof Response === false) {
+    throw new AstroError(EndpointDidNotReturnAResponse);
+  }
+  if (REROUTABLE_STATUS_CODES.includes(response.status)) {
+    try {
+      response.headers.set(REROUTE_DIRECTIVE_HEADER, "no");
+    } catch (err) {
+      if (err.message?.includes("immutable")) {
+        response = new Response(response.body, response);
+        response.headers.set(REROUTE_DIRECTIVE_HEADER, "no");
+      } else {
+        throw err;
+      }
+    }
+  }
+  return response;
 }
 
 function isPromise(value) {
@@ -1142,6 +1142,9 @@ function isSlotString(str) {
   return !!str[slotString];
 }
 function renderSlot(result, slotted, fallback) {
+  if (!slotted && fallback) {
+    return renderSlot(result, fallback);
+  }
   return {
     async render(destination) {
       await renderChild(destination, typeof slotted === "function" ? slotted(result) : slotted);
@@ -1170,7 +1173,7 @@ async function renderSlotToString(result, slotted, fallback) {
       }
     }
   };
-  const renderInstance = renderSlot(result, slotted);
+  const renderInstance = renderSlot(result, slotted, fallback);
   await renderInstance.render(temporaryDestination);
   return markHTMLString(new SlotString(content, instructions));
 }
@@ -1670,8 +1673,12 @@ const internalProps = /* @__PURE__ */ new Set([
 function containsServerDirective(props) {
   return "server:component-directive" in props;
 }
+const SCRIPT_RE = /<\/script/giu;
+const COMMENT_RE = /<!--/gu;
+const SCRIPT_REPLACER = "<\\/script";
+const COMMENT_REPLACER = "\\u003C!--";
 function safeJsonStringify(obj) {
-  return JSON.stringify(obj).replace(/\u2028/g, "\\u2028").replace(/\u2029/g, "\\u2029").replace(/</g, "\\u003c").replace(/>/g, "\\u003e").replace(/\//g, "\\u002f");
+  return JSON.stringify(obj).replace(SCRIPT_RE, SCRIPT_REPLACER).replace(COMMENT_RE, COMMENT_REPLACER);
 }
 function createSearchParams(componentExport, encryptedProps, slots) {
   const params = new URLSearchParams();
@@ -2419,4 +2426,4 @@ function spreadAttributes(values = {}, _name, { class: scopedClassName } = {}) {
   return markHTMLString(output);
 }
 
-export { SessionStorageInitError as $, AstroError as A, InvalidGetStaticPathsEntry as B, GetStaticPathsExpectedParams as C, GetStaticPathsInvalidRouteParam as D, ExpectedImage as E, FailedToFetchRemoteImageDimensions as F, GetStaticPathsRequired as G, decryptString as H, IncompatibleDescriptorOptions as I, createSlotValueFromString as J, isAstroComponentFactory as K, LocalImageUsedWrongly as L, MissingImageDimension as M, NoImageMetadata as N, DEFAULT_404_COMPONENT as O, PageNumberParamNotFound as P, NoMatchingStaticPathFound as Q, ROUTE_TYPE_HEADER as R, PrerenderDynamicEndpointPathCollide as S, ReservedSlotName as T, UnsupportedImageFormat as U, renderSlotToString as V, renderJSX as W, chunkToString as X, isRenderInstruction as Y, ForbiddenRewrite as Z, SessionStorageSaveError as _, renderComponent as a, LocalsReassigned as a0, AstroResponseHeadersReassigned as a1, PrerenderClientAddressNotAvailable as a2, clientAddressSymbol as a3, ClientAddressNotAvailable as a4, StaticClientAddressNotAvailable as a5, ASTRO_VERSION as a6, responseSentSymbol as a7, renderPage as a8, REWRITE_DIRECTIVE_HEADER_KEY as a9, REWRITE_DIRECTIVE_HEADER_VALUE as aa, renderEndpoint as ab, LocalsNotAnObject as ac, REROUTABLE_STATUS_CODES as ad, NOOP_MIDDLEWARE_HEADER as ae, MissingSharp as af, createAstro as b, createComponent as c, addAttribute as d, renderSlot as e, renderHead as f, UnsupportedImageConversion as g, ExpectedImageOptions as h, ExpectedNotESMImage as i, InvalidImageService as j, ImageMissingAlt as k, renderScript as l, maybeRenderHead as m, decodeKey as n, REROUTE_DIRECTIVE_HEADER as o, i18nNoLocaleFoundInPath as p, ResponseSentError as q, renderTemplate as r, spreadAttributes as s, toStyleString as t, unescapeHTML as u, MiddlewareNoDataOrNextCalled as v, MiddlewareNotAResponse as w, RewriteWithBodyUsed as x, originPathnameSymbol as y, InvalidGetStaticPathsReturn as z };
+export { SessionStorageInitError as $, AstroError as A, originPathnameSymbol as B, RewriteWithBodyUsed as C, InvalidGetStaticPathsReturn as D, ExpectedImage as E, FailedToFetchRemoteImageDimensions as F, GetStaticPathsRequired as G, InvalidGetStaticPathsEntry as H, IncompatibleDescriptorOptions as I, GetStaticPathsExpectedParams as J, GetStaticPathsInvalidRouteParam as K, LocalImageUsedWrongly as L, MissingImageDimension as M, NoImageMetadata as N, DEFAULT_404_COMPONENT as O, PageNumberParamNotFound as P, NoMatchingStaticPathFound as Q, ROUTE_TYPE_HEADER as R, PrerenderDynamicEndpointPathCollide as S, ReservedSlotName as T, UnsupportedImageFormat as U, renderSlotToString as V, renderJSX as W, chunkToString as X, isRenderInstruction as Y, ForbiddenRewrite as Z, SessionStorageSaveError as _, renderComponent as a, ASTRO_VERSION as a0, LocalsReassigned as a1, PrerenderClientAddressNotAvailable as a2, clientAddressSymbol as a3, ClientAddressNotAvailable as a4, StaticClientAddressNotAvailable as a5, AstroResponseHeadersReassigned as a6, responseSentSymbol as a7, renderPage as a8, REWRITE_DIRECTIVE_HEADER_KEY as a9, REWRITE_DIRECTIVE_HEADER_VALUE as aa, renderEndpoint as ab, LocalsNotAnObject as ac, REROUTABLE_STATUS_CODES as ad, NOOP_MIDDLEWARE_HEADER as ae, MissingSharp as af, createAstro as b, createComponent as c, addAttribute as d, renderSlot as e, renderHead as f, UnsupportedImageConversion as g, ExpectedImageOptions as h, ExpectedNotESMImage as i, InvalidImageService as j, ImageMissingAlt as k, renderScript as l, maybeRenderHead as m, decodeKey as n, decryptString as o, createSlotValueFromString as p, isAstroComponentFactory as q, renderTemplate as r, spreadAttributes as s, toStyleString as t, unescapeHTML as u, REROUTE_DIRECTIVE_HEADER as v, i18nNoLocaleFoundInPath as w, ResponseSentError as x, MiddlewareNoDataOrNextCalled as y, MiddlewareNotAResponse as z };

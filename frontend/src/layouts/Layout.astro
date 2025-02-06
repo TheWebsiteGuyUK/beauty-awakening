@@ -1,4 +1,5 @@
 ---	
+import "@styles/global.css";
 import MobileNav from "@components/MobileNav.astro";
 import Footer from "@components/Footer.astro";
 import { ClientRouter } from 'astro:transitions';
@@ -12,13 +13,13 @@ export interface Props {
 const { title, backgroundImageUrl } = Astro.props;
 ---
 <!doctype html>
-<html lang="en" class="scroll-smooth bg-primary">
+<html lang="en" class="scroll-smooth bg-primary" data-theme="mytheme">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<Styles />
+		<link rel="stylesheet" href="https://use.typekit.net/mgb1vlk.css">
 		<ClientRouter />
 		<title>{title} | Beauty Awakening by Chantelle</title>
 	</head>
@@ -30,4 +31,3 @@ const { title, backgroundImageUrl } = Astro.props;
 </html>
 
 <script defer src="https://unpkg.com/tailwindcss-intersect@2.x.x/dist/observer.min.js"></script>
-

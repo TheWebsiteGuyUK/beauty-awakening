@@ -1,4 +1,4 @@
-import { ae as NOOP_MIDDLEWARE_HEADER, O as DEFAULT_404_COMPONENT } from './astro/server_DReoOm-W.mjs';
+import { ae as NOOP_MIDDLEWARE_HEADER, O as DEFAULT_404_COMPONENT } from './astro/server_xhioWH8f.mjs';
 import { parse } from 'devalue';
 import '@astrojs/internal-helpers/path';
 import { escape } from 'html-escaper';
@@ -10,11 +10,9 @@ const NOOP_MIDDLEWARE_FN = async (_ctx, next) => {
 };
 
 const ACTION_QUERY_PARAMS = {
-  actionName: "_action",
-  actionPayload: "_astroActionPayload"
-};
+  actionName: "_action"};
 
-const __vite_import_meta_env__ = {"ASSETS_PREFIX": undefined, "BASE_URL": "/", "DEV": false, "MODE": "production", "PROD": true, "PUBLIC_API": "https://portal.beautyawakening.co.uk", "SITE": undefined, "SSR": true};
+const __vite_import_meta_env__ = {"ASSETS_PREFIX": undefined, "BASE_URL": "/", "DEV": false, "MODE": "production", "PROD": true, "PUBLIC_API": "https://portal.beautyawakening.co.uk", "PUBLIC_API_KEY": "2k1LbFO8Gtc4CLnM52g75NfaVRrgl4cW", "SITE": undefined, "SSR": true};
 const codeToStatusMap = {
   // Implemented from tRPC error code table
   // https://trpc.io/docs/server/error-handling#error-codes
@@ -114,7 +112,7 @@ function deserializeActionResult(res) {
         })
       };
     }
-    if (Object.assign(__vite_import_meta_env__, { OS: process.env.OS })?.PROD) {
+    if (Object.assign(__vite_import_meta_env__, { _: process.env._ })?.PROD) {
       return { error: ActionError.fromJson(json), data: undefined };
     } else {
       const error = ActionError.fromJson(json);
