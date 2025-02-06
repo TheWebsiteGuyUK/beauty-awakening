@@ -1,11 +1,13 @@
 @import "tailwindcss";
 @import "tailwindcss-intersect";
+@import "tailwindcss-animated";
 
 @theme {
   --font-hand: "gelato-fresco-variable", sans-serif;
 }
 
 @plugin "@tailwindcss/typography";
+
 
 @plugin "daisyui";
 @plugin "daisyui/theme" {
