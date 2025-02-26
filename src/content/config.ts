@@ -8,4 +8,12 @@ const posts = defineCollection({
   }),
 });
 
-export const collections = { posts };
+const treatments = defineCollection({
+  // Type-check frontmatter using a schema
+  schema: z.object({
+    title: z.string(),
+  }),
+});
+
+
+export const collections = { posts, treatments };
