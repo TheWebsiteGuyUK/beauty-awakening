@@ -1,13 +1,10 @@
 import { fields, singleton } from "@keystatic/core";
-import type { InternalError } from "node_modules/astro/dist/core/errors/errors";
 
 export const home = singleton({
   label: "Home Page",
-  path: "src/content/pages",
+  path: "src/content/pages/home",
   schema: {
-    site: fields.object({
-      title: fields.text({ label: "Page Title" }),
-    }),
+  title: fields.text({ label: "Page Title" }),
     hero: fields.object(
       {
         headline: fields.markdoc.inline({ label: "Header" }),

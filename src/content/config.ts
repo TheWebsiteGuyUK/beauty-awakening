@@ -15,5 +15,20 @@ const treatments = defineCollection({
   }),
 });
 
+const pages = defineCollection({
+  // Type-check frontmatter using a schema
+  schema: z.object({
+    title: z.string(),
+  }),
+});
 
-export const collections = { posts, treatments };
+
+const home = defineCollection({
+  type: 'data'
+  // Type-check frontmatter using a schema
+  schema: z.object({
+    title: z.string(),
+  }),
+});
+
+export const collections = { posts, treatments, pages, home };
