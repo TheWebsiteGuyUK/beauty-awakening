@@ -1,16 +1,41 @@
 ---
+import { getEntry } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 
 // Keystatic content
-import { createReader } from "@keystatic/core/reader";
-import keystaticConfig from "@base/keystatic.config";
-const reader = createReader("", keystaticConfig);
-const page = await reader.singletons.home.read();
+import data from "@content/pages/home.json";
+import MobileButtons from "@components/MobileButtons.astro";
+import TopBar from "@components/TopBar.astro";
 ---
 
-<Layout title={page?.title || "Beauty - Spa"}>
-  <section>
-    <h1>{page?.title}</h1>
-    <p></p>
-  </section>
+<Layout title={data?.title || "Beauty - Spa"}>
+  <div
+    class="h-fit flex flex-col bg-neutral bg-cover bg-center bg-no-repeat"
+    style={`background-image: url(${data?.hero.image});`}>
+    <div
+      class="flex h-full w-full flex-col justify-between bg-gradient-to-b from-neutral via-neutral/40 to-primary pb-20">
+      <TopBar />
+      <h1
+        class="animate-delay mx-auto max-w-6xl animate-fade text-wrap px-1 py-5 text-center font-hand text-5xl font-bold tracking-tight text-base-100 drop-shadow-lg animate-once animate-ease-in text-glow-primary/20 lg:py-20 lg:text-7xl 2xl:text-9xl">
+        {data?.hero?.headline}
+      </h1>
+      <!-- Mobile Buttons -->
+      <MobileButtons />
+      <button
+        class="mx-auto animate-bounce animate-delay-500 animate-duration-1000">
+        <svg
+          class="h-6 w-6 fill-neutral"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          ><path
+            d="m12 15.586-4.293-4.293-1.414 1.414L12 18.414l5.707-5.707-1.414-1.414z"
+          ></path><path
+            d="m17.707 7.707-1.414-1.414L12 10.586 7.707 6.293 6.293 7.707 12 13.414z"
+          ></path></svg
+        >
+      </button>
+    </div>
+  </div>
 </Layout>

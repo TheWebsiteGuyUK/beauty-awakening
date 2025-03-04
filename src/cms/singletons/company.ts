@@ -3,6 +3,7 @@ import { fields, singleton } from "@keystatic/core";
 export const company = singleton({
   label: "Company Details",
   path: "src/content/settings/company",
+  format: { data: "json" },
   schema: {
     address: fields.object(
       {
@@ -25,17 +26,20 @@ export const company = singleton({
       {
         label: "Contact details",
         description: "The contact details of the business",
-      },
+      }
     ),
     company: fields.object(
       {
-        registration: fields.text({ label: "Companies House registration number" }),
+        registration: fields.text({
+          label: "Companies House registration number",
+        }),
         vat: fields.text({ label: "VAT number" }),
       },
       {
         label: "Company Registration",
-        description: "The registration details of the business on Companies House",
-      },
+        description:
+          "The registration details of the business on Companies House",
+      }
     ),
   },
 });

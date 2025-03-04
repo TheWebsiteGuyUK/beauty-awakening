@@ -1,5 +1,6 @@
 // @ts-ignore
 import { defineCollection, z } from 'astro:content';
+import { glob, file } from "astro/loaders";
 
 const posts = defineCollection({
   // Type-check frontmatter using a schema
@@ -24,10 +25,28 @@ const pages = defineCollection({
 
 
 const home = defineCollection({
-  type: 'data'
-  // Type-check frontmatter using a schema
+  type: 'data',
   schema: z.object({
     title: z.string(),
+    hero: z.object({
+      headline: z.string(), // headline as a string
+      intro: z.string().optional(), // make this optional if it's empty in the YAML
+      image: z.string(),
+    }),
+    location: z.object({
+      headline: z.string(),
+      content: z.string(),
+      image: z.string(),
+      resume: z.string().optional(),
+    }),
+    cta: z.object({
+      headline: z.string(),
+      content: z.string(),
+      button: z.object({
+        label: z.string(),
+        link: z.string(),
+      }),
+    }),
   }),
 });
 

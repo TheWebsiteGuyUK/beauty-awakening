@@ -1,0 +1,53 @@
+---
+import { Image } from "astro:assets";
+import Logo from "@assets/images/logo/site/logoLight.webp";
+
+import { getCollection } from "astro:content";
+
+const treatments = await getCollection("treatments");
+---
+
+<div class="flex justify-between text-lg items-center">
+  <ul class="hidden menu 2xl:menu-horizontal mx-auto gap-20 font-hand text-2xl">
+    <li><a>About</a></li>
+    <li>
+      <details>
+        <summary><a href="/treatments">Treatments</a></summary>
+        <ul class="w-60 z-50 font-sans text-lg">
+          {
+            treatments.map((treatment) => (
+              <li>
+                <a
+                  href={`/treatments/${treatment.slug}`}
+                  data-astro-prefetch="tap">
+                  {treatment?.data?.title}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </details>
+    </li>
+  </ul>
+  <a href="/" class="mx-auto">
+    <picture>
+      <Image
+        src={Logo}
+        alt="Logo"
+        width={800}
+        height={600}
+        class="max-w-sm 2xl:max-w-lg p-6 drop-shadow-lg"
+        loading="eager"
+      />
+    </picture>
+  </a>
+  <ul class="hidden menu 2xl:menu-horizontal mx-auto gap-20 font-hand text-2xl">
+    <li><a href="/contact">Contact</a></li>
+    <li>
+      <a
+        href="https://www.fresha.com/a/beauty-awakening-by-chantelle-filleigh-castle-hill-gardens-barnstaple-hap6xt83?preview=24b31ae0-f6b1-4867-81c7-02e3854c8a5c&share&pId=1333999"
+        >Appointments</a
+      >
+    </li>
+  </ul>
+</div>

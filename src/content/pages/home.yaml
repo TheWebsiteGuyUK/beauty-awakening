@@ -1,9 +1,30 @@
 title: Beauty & Spa
 hero:
-  headline: ''
+  headline: |
+    A warm glowing welcome awaits you
   intro: ''
+  image: /src/assets/images/hero/image.webp
 location:
-  content: ''
+  headline: Awaken your beauty in the heart of North Devon's tranquility
+  content: >
+    Beauty Awakening, by Chantelle is set in the stunning and tranquil gardens
+    of Castle Hill, Filleigh, North Devon.
+  image: /src/assets/images/location/image.webp
+  resume: /media/location/resume.mp4
 cta:
-  content: ''
-  button: {}
+  headline: Unwind, Rejuvenate, and Rediscover Your Glow!
+  content: >
+    Whether you want to indulge in a dreamy facial and float away for a little
+    while, or a gorgeous massage to take those aches and pains away… there is
+    something here for everyone.
+
+
+    Please take a look at my treatment menu to see all treatments available, and
+    please don’t hesitate to get in touch if you have any questions at all.
+
+
+    Have a beautiful day, and I can’t wait to meet you. Chantelle x
+  button:
+    label: Book Now
+    link: >-
+      https://www.fresha.com/a/beauty-awakening-by-chantelle-filleigh-castle-hill-gardens-barnstaple-hap6xt83?pId=1333999

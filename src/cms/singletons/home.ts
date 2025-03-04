@@ -3,8 +3,9 @@ import { fields, singleton } from "@keystatic/core";
 export const home = singleton({
   label: "Home Page",
   path: "src/content/pages/home",
+  format: { data: "json" },
   schema: {
-  title: fields.text({ label: "Page Title" }),
+    title: fields.text({ label: "Page Title" }),
     hero: fields.object(
       {
         headline: fields.markdoc.inline({ label: "Header" }),
@@ -31,7 +32,7 @@ export const home = singleton({
           directory: "src/assets/images",
           publicPath: "/src/assets/images",
         }),
-        resume: fields.file({
+        video: fields.file({
           label: "Location video",
           description: "A video clip of location",
           // This will output the files in the "public" directory
@@ -57,6 +58,6 @@ export const home = singleton({
         label: "Call to Action Section",
         description: "A call to action section",
       }
-    )
+    ),
   },
 });
