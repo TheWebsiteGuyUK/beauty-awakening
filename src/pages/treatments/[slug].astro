@@ -1,0 +1,23 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+
+const { slug } = Astro.params;
+if (!slug) throw new Error("Slug not found");
+const treatment = await getEntry("treatments", slug);
+
+if (!treatment) throw new Error("No treatment found for this slug");
+const { Content } = await treatment.render();
+
+// Generate static pages
+export async function getStaticPaths() {
+  const treatments = await getCollection("treatments");
+  return treatments.map((treatment) => ({ params: { slug: treatment.slug } }));
+}
+---
+
+<Layout title={treatment.data.title}>
+  <h1>{treatment.data.title}</h1>
+  
+  <Content />
+</Layout>

@@ -1,0 +1,21 @@
+title: Massage Therapy
+headline: Relieve your aches and pains.
+excerpt: >-
+  Massage treatments offer a sanctuary from the daily grind, melting away
+  tension and easing those persistent aches and pains.
+draft: false
+seo:
+  discriminant: false
+blocks:
+  - discriminant: treatmentBlock
+    value:
+      name: Swedish Massage
+      description: >-
+        A rejuvenating or relaxing full body massage using a variety of
+        techniques to relax your muscles, relieve tension and increase blood
+        flow.
+      duration: 60
+      cost: 55
+      url: >-
+        https://www.fresha.com/book-now/beauty-awakening-by-chantelle-zxqfp2r1/services?lid=1404738&eid=3200347&oiid=sv%3A20396744&share&pId=1333999
+image: /src/assets/images/massage/image.webp

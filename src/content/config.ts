@@ -1,6 +1,7 @@
 // @ts-ignore
 import { defineCollection, z } from 'astro:content';
 import { glob, file } from "astro/loaders";
+import { treatment } from '@cms/blocks';
 
 const posts = defineCollection({
   // Type-check frontmatter using a schema
@@ -9,10 +10,29 @@ const posts = defineCollection({
   }),
 });
 
+const treatment = defineCollection({
+  // Type-check frontmatter using a schema
+  type: 'data',
+  schema: z.object({
+    name: z.string(),
+    description: z.string(),
+    duration: z.number(),
+    cost: z.number(),
+    url: z.string(),
+    disclaimer: z.string(),
+  }),
+});
+
+
 const treatments = defineCollection({
   // Type-check frontmatter using a schema
+  type: 'data',
   schema: z.object({
     title: z.string(),
+    headline: z.string(),
+    excerpt: z.string(),
+    image: z.string(),
+    treatments: z.array(treatment), // Reference the treatment schema
   }),
 });
 
@@ -50,4 +70,4 @@ const home = defineCollection({
   }),
 });
 
-export const collections = { posts, treatments, pages, home };
+export const collections = { posts, treatments, treatment, pages, home };
