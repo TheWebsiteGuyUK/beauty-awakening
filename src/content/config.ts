@@ -1,38 +1,42 @@
 // @ts-ignore
-import { defineCollection, z } from 'astro:content';
+import { defineCollection, z } from "astro:content";
 import { glob, file } from "astro/loaders";
-import { treatment } from '@cms/blocks';
+//import { treatment } from '@cms/blocks'; // We'll define inline for clarity
+
+const treatments = defineCollection({
+  // Type-check frontmatter using a schema
+  loader: glob({ pattern: "**/*.yaml", base: "./src/content/treatments" }),
+  schema: z.object({
+    title: z.string(),
+    slug: z.string().optional(), // Optional if not present in YAML
+    headline: z.string(),
+    excerpt: z.string(),
+    draft: z.boolean(),
+    seo: z.object({
+      discriminant: z.boolean(),
+    }),
+    blocks: z.array(
+      z.object({
+        discriminant: z.string(),
+        value: z.object({
+          name: z.string(),
+          description: z.string(),
+          duration: z.number(),
+          cost: z.number(),
+          url: z.string(),
+        }),
+      })
+    ),
+    image: z.string(),
+  }),
+});
+
+//Rest of collections
 
 const posts = defineCollection({
   // Type-check frontmatter using a schema
   schema: z.object({
     title: z.string(),
-  }),
-});
-
-const treatment = defineCollection({
-  // Type-check frontmatter using a schema
-  type: 'data',
-  schema: z.object({
-    name: z.string(),
-    description: z.string(),
-    duration: z.number(),
-    cost: z.number(),
-    url: z.string(),
-    disclaimer: z.string(),
-  }),
-});
-
-
-const treatments = defineCollection({
-  // Type-check frontmatter using a schema
-  type: 'data',
-  schema: z.object({
-    title: z.string(),
-    headline: z.string(),
-    excerpt: z.string(),
-    image: z.string(),
-    treatments: z.array(treatment), // Reference the treatment schema
   }),
 });
 
@@ -43,9 +47,8 @@ const pages = defineCollection({
   }),
 });
 
-
 const home = defineCollection({
-  type: 'data',
+  type: "data",
   schema: z.object({
     title: z.string(),
     hero: z.object({
@@ -70,4 +73,4 @@ const home = defineCollection({
   }),
 });
 
-export const collections = { posts, treatments, treatment, pages, home };
+export const collections = { posts, treatments, pages, home };

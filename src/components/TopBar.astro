@@ -17,10 +17,8 @@ const treatments = await getCollection("treatments");
           {
             treatments.map((treatment) => (
               <li>
-                <a
-                  href={`/treatments/${treatment.slug}`}
-                  data-astro-prefetch="tap">
-                  {treatment?.data?.title}
+                <a href={`/treatments/${treatment?.id}`}>
+                  {treatment.data.title}
                 </a>
               </li>
             ))

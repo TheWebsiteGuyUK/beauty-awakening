@@ -1,0 +1,30 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import Layout from "@layouts/Default.astro";
+import TreatmentCard from "@components/TreatmentCard.astro";
+
+
+const treatments = await getCollection("treatments");
+---
+
+<Layout title="Treatments">
+  <h1>Treatments</h1>
+
+  <ul class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+    {
+      treatments.map((treatment) => (
+        <li>
+          <a href={`/treatments/${treatment?.id}`}>
+            <TreatmentCard
+              title={treatment.data.title}
+              headline={treatment.data.headline}
+              imgSrc={treatment.data.image}
+              imgAlt={treatment.data.title}
+              excerpt={treatment.data.excerpt}
+            />
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</Layout>
