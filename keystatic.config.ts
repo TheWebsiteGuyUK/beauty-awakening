@@ -7,7 +7,7 @@ export default config({
     kind: 'cloud',
   },
   cloud: {
-    project: 'TheWebsiteGuyUK/beauty-awakening',
+    project: 'beauty-awakening/beauty-awakening',
   },
   ui: {
     brand: { name: "Beauty Awakening CMS" },
