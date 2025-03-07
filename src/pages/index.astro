@@ -1,0 +1,110 @@
+---
+import Layout from "@layouts/Default.astro";
+import { getCollection } from "astro:content";
+import Hero from "@components/Hero.astro";
+import TreatmentCard from "@components/TreatmentCard.astro";
+import Cta from "@components/Cta.astro";
+
+// Keystatic content
+import data from "@content/pages/home.json";
+const treatments = await getCollection("treatments");
+---
+
+<Layout title={data?.title || "Beauty - Spa"}>
+  <Hero
+    title={data?.title}
+    backgroundImageUrl={data?.hero?.image}
+    headline={data?.hero?.headline}
+    intro={data?.hero?.intro}
+  />
+
+  <section>
+    <div class="container mx-auto max-w-none px-3 py-20">
+      <ul class="flex flex-wrap justify-center gap-3">
+        {
+          treatments.map((treatment) => (
+            <li>
+              <a
+                href={`/treatments/${treatment?.id}`}
+                class="intersect:animate-fade-up animate-duration-3000 animate-delay-1000 flex h-full w-96 flex-grow flex-col">
+                <TreatmentCard
+                  title={treatment.data.title}
+                  headline={treatment.data.headline}
+                  imgSrc={treatment.data.image}
+                  imgAlt={treatment.data.title}
+                  excerpt={treatment.data.excerpt}
+                />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="py-20">
+    <div
+      class="intersect:animate-fade animate-duration-1000 animate-delay-100 py-20">
+      <div
+        class="flex h-full flex-col bg-cover bg-center bg-no-repeat"
+        style={`background-image: url(${data?.location?.image});`}>
+        <div
+          class="from-base-300 via-neutral/50 to-base-300 relative inline-block h-full w-full bg-gradient-to-b py-10 backdrop-blur-xs">
+          <h2
+            class="font-hand animate-duration-[2000ms] animate-once text-glow-primary intersect:animate-fade-up mx-auto max-w-5xl px-3 text-center text-4xl font-bold tracking-tight text-wrap text-white/90 drop-shadow md:text-7xl">
+            {data?.location?.headline}
+          </h2>
+          <div
+            class="animate-duration-[1000ms] animate-once intersect:animate-fade-up mx-auto max-w-[90dvw] px-3 py-20 xl:max-w-screen-lg">
+            <div
+              class="flex flex-col items-center justify-between gap-10 rounded bg-white/50 p-6 backdrop-blur-sm md:flex-row">
+              <div class="">
+                <div class="flex flex-col justify-between gap-6 px-3">
+                  <article
+                    class="flex w-full flex-col gap-6 px-0 text-center text-2xl text-pretty md:w-96 md:px-3 md:text-left xl:text-4xl">
+                    <p set:html={data?.location?.content} />
+                  </article>
+                  <div
+                    class="flex flex-row justify-center gap-6 px-0 md:px-3 lg:justify-start">
+                    <a href=""
+                      ><button class="btn btn-primary"> Book now</button></a
+                    >
+                    <a href="/treatments"
+                      ><button class="btn btn-neutral">
+                        View treatments</button
+                      ></a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div>
+                <video
+                  controls
+                  autoplay
+                  loop
+                  muted
+                  width="360"
+                  height="640"
+                  class="rounded">
+                  <source src={data?.location?.video} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pb-40">
+    <Cta
+      headline={data.cta.headline}
+      content={data.cta.content}
+      btnLabel={data.cta.button.label}
+      btnUrl={data.cta.button.link}
+      img1src={data.cta.image1}
+      img2src={data.cta.image2}
+    />
+  </section>
+</Layout>

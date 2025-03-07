@@ -1,0 +1,27 @@
+---
+import TopBar from "./TopBar.astro";
+export interface Props {
+  title: string;
+  backgroundImageUrl: string;
+  headline: string;
+  intro: string;
+}
+
+const { backgroundImageUrl, headline, intro } = Astro.props;
+---
+
+<div
+  class="bg-neutral flex h-fit flex-col bg-cover bg-center bg-no-repeat"
+  style={`background-image: url(${backgroundImageUrl});`}>
+  <div
+    class="from-base-300 via-neutral/40 to-base-300 flex h-full w-full flex-col justify-between bg-gradient-to-b pb-20">
+    <TopBar />
+    <header class="text-center">
+      <h1
+        class="animate-delay animate-fade font-hand animate-once animate-ease-in text-glow-primary/20 mx-auto max-w-6xl px-1 py-10 text-5xl font-bold tracking-tight text-wrap text-base-100 drop-shadow-lg lg:text-7xl 2xl:text-9xl">
+        {headline}
+      </h1>
+      <p class="text-xl text-accent-content font-semibold tracking-tight max-w-2xl mx-auto">{intro}</p>
+    </header>
+  </div>
+</div>

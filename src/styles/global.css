@@ -1,0 +1,58 @@
+/* Adobe Font - Gelato Fresco Variable  */
+@import url("https://use.typekit.net/mgb1vlk.css");
+
+/* Tailwind */
+@import "tailwindcss";
+@import "tailwindcss-intersect";
+@import "tailwindcss-animated";
+
+@theme {
+  --font-hand: "gelato-fresco-variable", sans-serif;
+}
+
+@plugin "@tailwindcss/typography";
+
+/* DaisyUI */
+@plugin "daisyui";
+@plugin "daisyui/theme" {
+  name: "beautyTheme";
+  default: true;
+  color-scheme: light;
+
+  --color-base-100: oklch(95.6% 0.018 96.8); 
+  --color-base-200: oklch(92.5% 0.02 96.8); /* Slightly darker shade */
+  --color-base-300: oklch(89.3% 0.025 96.8); /* Another darker shade */
+  --color-base-content: oklch(23% 0.05 260); /* Adjusted for readability */
+  --color-primary: oklch(68.26% 0.0444 116.49); /* Approx. for #979d7e */
+  --color-primary-content: oklch(98% 0.01 240); /* High-contrast text color */
+  --color-secondary: oklch(78.2% 0.045 86); /* Approx. for #c9b288 */
+  --color-secondary-content: oklch(98% 0.01 240); /* High-contrast text color */
+  --color-accent: oklch(52.7% 0.038 77.4); /* Approx. for #7c6850 */
+  --color-accent-content: oklch(98% 0.01 240); /* High-contrast text color */
+  --color-neutral: oklch(80% 0.018 8.2); /* Approx. for #C8BFC0 */
+  --color-neutral-content: oklch(23% 0.05 240); /* Adjusted for contrast */
+  --color-info: oklch(68% 0.1 230); /* Suggested for info messages */
+  --color-info-content: oklch(98% 0.01 220); /* High-contrast text color */
+  --color-success: oklch(65% 0.25 140); /* Suggested for success messages */
+  --color-success-content: oklch(98% 0.01 140); /* High-contrast text color */
+  --color-warning: oklch(80% 0.25 80); /* Suggested for warnings */
+  --color-warning-content: oklch(20% 0.05 80); /* Content color for warnings */
+  --color-error: oklch(65% 0.3 30); /* Suggested for error messages */
+  --color-error-content: oklch(98% 0.01 30); /* High-contrast text color */
+
+  /* border radius */
+  --radius-selector: 1rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
+
+  /* base sizes */
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+
+  /* border size */
+  --border: 1px;
+
+  /* effects */
+  --depth: 1;
+  --noise: 0;
+}

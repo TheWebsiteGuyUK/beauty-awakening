@@ -1,0 +1,57 @@
+---
+import { Image } from 'astro:assets';
+export interface Props {
+    headline: string;
+    content: string;
+    btnLabel: string;
+    btnUrl: string;
+    img1src: string;
+    img2src: string;
+
+}
+
+const { headline, content, btnLabel, btnUrl, img1src, img2src } = Astro.props;
+---
+
+<div
+  class="intersect:animate-fade-up relative mx-auto max-w-screen-2xl px-4 sm:px-0">
+  <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+    <div
+      class="bg-primary animate-once intersect:animate-fade p-8 md:p-12 lg:px-16 lg:py-24">
+      <div class="mx-auto max-w-xl text-center">
+        <h2 class="text-2xl font-bold text-white md:text-3xl">
+          {headline}
+        </h2>
+
+        <p set:html={content} />
+
+        <div class="mt-4 md:mt-8">
+          <a
+            href={btnUrl}
+            class="text-primary inline-block rounded border border-white bg-white px-12 py-3 text-sm font-medium transition hover:bg-transparent hover:text-white focus:ring focus:ring-yellow-400 focus:outline-none">
+           {btnLabel}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="animate-once intersect:animate-fade grid grid-cols-2 gap-4 md:grid-cols-1 lg:grid-cols-2">
+      <Image
+        alt=""
+        src={img1src}
+        height={800}
+        width={400}
+        class="h-40 w-full object-cover sm:h-56 md:h-full"
+      />
+
+      <Image
+        alt=""
+        src={img2src}
+        height={800}
+        width={400}
+        class="h-40 w-full object-cover sm:h-56 md:h-full"
+      />
+    </div>
+  </div>
+</div>

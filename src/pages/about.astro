@@ -1,0 +1,15 @@
+---
+import Layout from "@layouts/Default.astro";
+import Hero from "@components/Hero.astro";
+
+import bgImg from "@assets/images/spa.webp";
+
+import data from "@content/pages/about.json";
+---
+
+<Layout title={data.title}>
+  <Hero backgroundImageUrl={bgImg.src} headline={data.title} />
+  <article class="prose prose-xl max-w-screen-xl py-20 mx-auto">
+    <p set:html={data.content} />
+  </article>
+</Layout>

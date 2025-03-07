@@ -1,0 +1,88 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import Layout from "@layouts/Default.astro";
+import Hero from "@components/Hero.astro";
+
+export async function getStaticPaths() {
+  const treatments = await getCollection("treatments");
+  return treatments.map((treatment) => ({
+    params: { slug: treatment.id },
+    props: { treatment },
+  }));
+}
+
+const { treatment } = Astro.props;
+const blocks = treatment.data.blocks ?? [];
+---
+
+<Layout title={treatment.data.title}>
+  <Hero
+    title={treatment.data.title}
+    backgroundImageUrl={treatment.data.image}
+    headline={treatment.data.title}
+  />
+  <section>
+    <div class="container mx-auto">
+      <header class="pb-20 text-center">
+        <h2 class="py-6 font-semibold text-accent text-2xl">{treatment.data.headline}</h2>
+        <p>{treatment.data.excerpt}</p>
+      </header>
+      <ul class="grid grid-cols-1 items-stretch gap-4 p-3 md:grid-cols-2">
+        {
+          blocks.map((block) => (
+            <li class="hover:bg-base-100 flex h-full scale-95 transition-all hover:scale-100 hover:rounded-3xl hover:shadow-lg">
+              <div class="card card-md flex flex-grow flex-col p-3">
+                <div class="card-body flex flex-grow flex-col">
+                  <h2 class="card-title">{block.value.name}</h2>
+                  <p class="flex-grow py-6">{block.value.description}</p>
+                  <blockquote class="text-xs">
+                    <p>{block.value.disclaimer}</p>
+                  </blockquote>
+                  <div class="card-actions justify-between">
+                    <div>
+                      <p>
+                        <strong>Duration:</strong> {block.value.duration}{" "}
+                        minutes
+                      </p>
+                      <p>
+                        <strong>Cost:</strong> £{block.value.cost}
+                      </p>
+                    </div>
+                    <div>
+                      <a
+                        href="https://www.fresha.com/book-now/beauty-awakening-by-chantelle-zxqfp2r1/all-offer?share&pId=1333999"
+                        target="_blank">
+                        <button class="btn btn-primary">
+                          Book Now
+                          <span>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              class="h-5 w-5">
+                              <>
+                                <path d="M15 3h6v6" />
+                                <path d="M10 14 21 3" />
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                              </>
+                            </svg>
+                          </span>
+                        </button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+</Layout>

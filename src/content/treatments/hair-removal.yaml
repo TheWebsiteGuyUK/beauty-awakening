@@ -1,0 +1,64 @@
+title: Hair Removal
+headline: Experience the freedom of smooth, hair-free skin.
+excerpt: >-
+  Achieve beautifully smooth skin while enjoying a personalised and relaxing
+  experience.
+draft: false
+seo:
+  discriminant: false
+blocks:
+  - discriminant: treatmentBlock
+    value:
+      name: Full Leg Wax
+      description: 'Removal of unwanted hair on whole leg. '
+      duration: 60
+      cost: 30
+  - discriminant: treatmentBlock
+    value:
+      name: Half Leg Wax
+      description: 'Removal of unwanted hair on lower half of leg. '
+      duration: 45
+      cost: 22
+  - discriminant: treatmentBlock
+    value:
+      name: Full Leg & Bikini Wax
+      description: 'Removal of unwanted hair on full leg and removal of bikini line hair. '
+      duration: 60
+      cost: 39
+  - discriminant: treatmentBlock
+    value:
+      name: Bikini Wax
+      description: 'Removal of unwanted bikini hair. '
+      duration: 30
+      cost: 16
+  - discriminant: treatmentBlock
+    value:
+      name: Lip & Chin Wax
+      description: 'Removal of unwanted lip & chin hair. '
+      duration: 30
+      cost: 15
+  - discriminant: treatmentBlock
+    value:
+      name: Chin Wax
+      description: 'Removal of unwanted chin hairs. '
+      duration: 15
+      cost: 8
+  - discriminant: treatmentBlock
+    value:
+      name: Upper Lip Wax
+      description: 'Removal of unwanted upper lip hair. '
+      duration: 15
+      cost: 8
+  - discriminant: treatmentBlock
+    value:
+      name: Underarm Wax
+      description: 'Removal of unwanted underarm hair. '
+      duration: 25
+      cost: 16
+  - discriminant: treatmentBlock
+    value:
+      name: Eyebrow Wax
+      description: Removal of eyebrow hair
+      duration: 30
+      cost: 16
+image: /src/assets/images/hair-removal/image.webp
