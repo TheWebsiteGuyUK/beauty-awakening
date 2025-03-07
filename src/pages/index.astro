@@ -7,6 +7,7 @@ import Cta from "@components/Cta.astro";
 
 // Keystatic content
 import data from "@content/pages/home.json";
+import MobileButtons from "@components/MobileButtons.astro";
 const treatments = await getCollection("treatments");
 ---
 
@@ -19,6 +20,12 @@ const treatments = await getCollection("treatments");
   />
 
   <section>
+    <div class="container mx-auto p-3">
+      <MobileButtons />
+    </div>
+  </section>
+
+  <section>
     <div class="container mx-auto max-w-none px-3 py-20">
       <ul class="flex flex-wrap justify-center gap-3">
         {
@@ -26,7 +33,7 @@ const treatments = await getCollection("treatments");
             <li>
               <a
                 href={`/treatments/${treatment?.id}`}
-                class="intersect:animate-fade-up animate-duration-3000 animate-delay-1000 flex h-full w-96 flex-grow flex-col">
+                class="intersect:animate-fade-up animate-duration-3000 animate-delay-1000 flex h-full max-w-96 flex-grow flex-col">
                 <TreatmentCard
                   title={treatment.data.title}
                   headline={treatment.data.headline}
@@ -98,7 +105,7 @@ const treatments = await getCollection("treatments");
     </div>
   </section>
 
-  <section class="pb-40">
+  <section class="pb-40 px-3">
     <Cta
       headline={data.cta.headline}
       content={data.cta.content}
