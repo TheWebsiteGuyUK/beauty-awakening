@@ -4,7 +4,7 @@ import { imageConfig } from "astro:assets";
 export const about = singleton({
   label: "About Page",
   path: "src/content/pages/about",
-  format: { data: "json" },
+  // format: { data: "json" },
   schema: {
     title: fields.text({ label: "Page Title" }),
     headline: fields.text({ label: "Headline" }),
