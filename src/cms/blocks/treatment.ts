@@ -19,4 +19,5 @@ export const treatment = {
     }),
     disclaimer: fields.text({ label: "Disclaimer", multiline: true }),
   }),
+  itemLabel: (props) => props.fields.name.value || "Treatment",
 };

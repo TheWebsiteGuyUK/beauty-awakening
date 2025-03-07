@@ -18,4 +18,61 @@ blocks:
       cost: 55
       url: >-
         https://www.fresha.com/book-now/beauty-awakening-by-chantelle-zxqfp2r1/services?lid=1404738&eid=3200347&oiid=sv%3A20396744&share&pId=1333999
+  - discriminant: treatmentBlock
+    value:
+      name: 'Aromatherapy Massage '
+      description: >-
+        A wonderful massage using 100 percent essential oils from plants to help
+        aid and promote relaxation and well-being. Aids in lymphatic drainage
+        clearing toxins from your body. Essential plant oils are used on the
+        skin with gentle massage techniques such as kneading, stroking and
+        pressure point manipulation. The combined use of essential oils and the
+        gentle massage techniques helps to enhance physical and mental
+        well-being.
+      duration: 60
+      cost: 50
+      url: >-
+        https://www.fresha.com/book-now/beauty-awakening-by-chantelle-zxqfp2r1/services?lid=1404738&eid=3200347&oiid=sv%3A20397851&share&pId=1333999
+  - discriminant: treatmentBlock
+    value:
+      name: 'Indian Head Massage '
+      description: >-
+        A beautiful ancient holistic massage treatment using massage techniques
+        to the head, neck, shoulders face and arms. Stimulates blood flow which
+        aids improved hair and scalp health, relieve stress and tension, improve
+        sleep quality and reduced headaches.
+      duration: 45
+      cost: 38
+      url: >-
+        https://www.fresha.com/book-now/beauty-awakening-by-chantelle-zxqfp2r1/services?lid=1404738&eid=3200347&oiid=sv%3A20397966&share&pId=1333999
+  - discriminant: treatmentBlock
+    value:
+      name: Back, Neck & Shoulders
+      description: >-
+        A rejuvenating or relaxing Back, Neck & Shoulder massage using a variety
+        of techniques to relax your muscles, relieve tension and increase blood
+        flow.
+      duration: 45
+      cost: 43
+      url: >-
+        https://www.fresha.com/book-now/beauty-awakening-by-chantelle-zxqfp2r1/services?lid=1404738&eid=3200347&oiid=sv%3A20398004&share&pId=1333999
+  - discriminant: treatmentBlock
+    value:
+      name: Back Massage & Back of Legs Massage
+      description: >-
+        A rejuvenating/relaxing back and back of leg massage using a variety of
+        techniques to relax your muscles, relieve tension and increase blood
+        flow.
+      duration: 45
+      cost: 43
+      url: >-
+        https://www.fresha.com/book-now/beauty-awakening-by-chantelle-zxqfp2r1/services?lid=1404738&eid=3200347&oiid=sv%3A20398050&share&pId=1333999
+  - discriminant: treatmentBlock
+    value:
+      name: 'Back Massage '
+      description: >-
+        A rejuvenating/relaxing back massage using a variety of techniques to
+        relax your muscles, relieve tension and increase blood flow. 
+      duration: 30
+      cost: 35
 image: /src/assets/images/massage/image.webp

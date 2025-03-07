@@ -1,6 +1,6 @@
 import { config } from "@keystatic/core";
 import { treatments } from "@cms/collections";
-import { home, branding, seo, company } from "@cms/singletons";
+import { home, branding, seo, company, about } from "@cms/singletons";
 
 export default config({
   storage: {
@@ -11,7 +11,7 @@ export default config({
   ui: {
     brand: { name: "Beauty Awakening CMS" },
     navigation: {
-      Content: ["home", "treatments"],
+      Content: ["home", "treatments", "about"],
       Settings: ["branding", "seo", "---", "company"],
     },
   },
@@ -23,5 +23,6 @@ export default config({
     branding,
     seo,
     company,
+    about,
   },
 });

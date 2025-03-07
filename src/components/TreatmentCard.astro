@@ -13,13 +13,14 @@ export interface Props {
 const { imgSrc, imgAlt, excerpt, title } = Astro.props;
 ---
 
-<div class="card bg-base-100 w-96 shadow-sm">
+<div class="card bg-base-100 w-full shadow-sm flex h-full flex-col">
   <figure>
     <Image
       src={imgSrc}
       alt={imgAlt}
       width={600}
       height={400}
+      class="h-40 w-full object-cover object-center"
     />
   </figure>
   <div class="card-body">
@@ -27,8 +28,8 @@ const { imgSrc, imgAlt, excerpt, title } = Astro.props;
     <p>
       {excerpt}
     </p>
-    <div class="card-actions justify-end">
-      <button class="btn btn-primary">View Services</button>
+    <div class="card-actions justify-end mt-3">
+      <button class="btn btn-primary">View Treatments </button>
     </div>
   </div>
 </div>

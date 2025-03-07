@@ -1,0 +1,62 @@
+title: Spa Treatments
+headline: Unwind and reconnect with yourself
+excerpt: >-
+  Body treatments designed to soothe your muscles, calm your mind, and leave you
+  feeling refreshed and revitalised.
+draft: false
+seo:
+  discriminant: false
+blocks:
+  - discriminant: treatmentBlock
+    value:
+      name: 'Relaxing Full Body Spa Treatment '
+      description: >-
+        Relaxing Full Body (60 mins without massage / 120 mins with massage) - A
+        full body treatment experience to deeply relax the body and mind.
+        Discover the ultimate feeling of relaxation and wellbeing with our
+        signature full body treatment. Skin buffing sea salts will smooth the
+        skin to perfection before the expert application of potent aromatic
+        oils. A luxurious heating body wrap will be applied to your full body
+        and cocooned for warmth and comfort. Nourishing moisturisers finalise
+        the treatment leaving you feeling fresh, restored, and revitalised.
+      duration: 60
+      cost: 60
+  - discriminant: treatmentBlock
+    value:
+      name: 'Body Glow! Full Body Exfoliation Spa treatment '
+      description: >-
+        Body Glow! Full Body Exfoliation (30 mins) - Full body exfoliation to
+        leave the skin soft, smooth and glowing. Our finely ground sea salt
+        infused with essential oils of Jasmine and Ylang Ylan soothe the senses
+        while the dull, dry skin cells are buffed away. Skin drenching
+        moisturisers conclude the treatment leaving skin feeling soft, smooth,
+        and hydrated. 
+      duration: 30
+      cost: 33
+  - discriminant: treatmentBlock
+    value:
+      name: 'Anti-stress Back Spa Treatment '
+      description: >-
+        Anti Stress Back Treatment (60 mins) - A deeply relaxing back treatment
+        including back massage. Drift away on an aromatic journey to a world of
+        relaxation. Hand blended essential oils give you the ultimate in
+        relaxation combined with the power of touch and expert massage
+        techniques. A thermal body mask helps to ease any discomfort and tension
+        leaving your mind and body soothed and refreshed.
+      duration: 60
+      cost: 55
+  - discriminant: treatmentBlock
+    value:
+      name: 'Detoxifying Full Body Spa treatment '
+      description: >-
+        Detoxifying Full Body (60 mins without massage, 120 mins with massage) -
+        A full body treatment experience to detoxify and renew. Refresh and
+        renew with this highly detoxifying full body treatment. Marine salts
+        assist the buffing away of dulling skin cells ready for potent aromatics
+        to be infused into the skin. A highly active seaweed body wrap will
+        purge toxins and remineralise the skin. A skin drenching moisturising
+        blend finalising the treatment leaving your skin feeling silky soft,
+        smooth, and glowing.
+      duration: 60
+      cost: 60
+image: /src/assets/images/spa/image.webp

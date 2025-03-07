@@ -20,7 +20,7 @@ export const home = singleton({
       {
         label: "Hero/Intro Section",
         description: "The main headline section of home page",
-      }
+      },
     ),
     location: fields.object(
       {
@@ -43,7 +43,7 @@ export const home = singleton({
       {
         label: "Location Section",
         description: "Brief details about location",
-      }
+      },
     ),
     cta: fields.object(
       {
@@ -53,11 +53,23 @@ export const home = singleton({
           label: fields.text({ label: "Button Label" }),
           link: fields.url({ label: "Button Link" }),
         }),
+        image1: fields.image({
+          label: "Image 1",
+          description: "Image for the background",
+          directory: "src/assets/images",
+          publicPath: "/src/assets/images",
+        }),
+        image2: fields.image({
+          label: "Image 2",
+          description: "Image for the background",
+          directory: "src/assets/images",
+          publicPath: "/src/assets/images",
+        }),
       },
       {
         label: "Call to Action Section",
         description: "A call to action section",
-      }
+      },
     ),
   },
 });

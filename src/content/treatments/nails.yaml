@@ -1,0 +1,114 @@
+title: Manicures & Pedicures
+headline: Hands and Feet that Shine
+excerpt: >-
+  Manicures and pedicures offer the perfect blend of relaxation and care,
+  leaving hands and feet looking refreshed and polished.
+draft: false
+seo:
+  discriminant: false
+blocks:
+  - discriminant: treatmentBlock
+    value:
+      name: Gel Manicure
+      description: |+
+        A Gel Manicure to make your hands sparkle! 
+        -Nail clean
+        -Shape and file
+        -Cuticle tidy
+        -Gel polish application 
+        -Hydrating cuticle oil to quench thirsty nails
+        -Nourishing moisturiser
+
+      duration: 60
+      cost: 30
+      disclaimer: >-
+        ** Please note, I don’t work on other nail techs work, so if a removal
+        is needed this will need to be an added service and extra time for
+        appointment as stated in my policies**
+  - discriminant: treatmentBlock
+    value:
+      name: 'French Tips '
+      description: 'Add On French Tips £5 '
+      duration: 10
+      cost: 5
+  - discriminant: treatmentBlock
+    value:
+      name: Removal & Re-application of Gel Polish
+      description: |-
+        -nail soak 
+        -colour removal 
+        -mini manicure
+        -gel polish application
+        -cuticle oil and moisturiser 
+      duration: 90
+      cost: 35
+  - discriminant: treatmentBlock
+    value:
+      name: 'Gel Removal '
+      description: |-
+        Removal includes:
+        -nail soak 
+        -product removal
+        -mini manicure
+        -cuticle oil and moisturiser 
+      duration: 45
+      cost: 18
+  - discriminant: treatmentBlock
+    value:
+      name: Manicure
+      description: >
+        A tidy up of nails and cuticles.
+
+        Filed and shaped nails, nails cleaned, cuticle tidy, and a nourishing
+        moisturiser and nail oil to hydrate your nails and hands.
+      duration: 45
+      cost: 28
+      disclaimer: |-
+        *Please note that no nail polish is applied in this treatment*
+        *Please remove polish/gel prior to treatment*
+  - discriminant: treatmentBlock
+    value:
+      name: Deluxe Manicure
+      description: |-
+        Pamper dehydrated and tired hands with this dreamy Deluxe Manicure:
+        -nail clean
+        -shape and file of nail
+        -cuticle tidy
+        -cuticle oil
+        -hand and arm exfoliation
+        -hand and arm massage
+        -hydrating mask applied to hand and arms
+        - hydrating moisturiser applied to hands and arms
+        -Hot mitts applied to remove product… dreamy! 
+        *Please note that no polish is applied in this treatment*
+         *Please remove any polish/gel prior to treatment*
+      duration: 90
+      cost: 38
+  - discriminant: treatmentBlock
+    value:
+      name: Pedicure
+      description: >
+        TLC for tired and dehydrated feet. Let's quench those feet and make them
+        sparkle!
+
+        -foot soak
+
+        - foot rasp
+
+        -exfoliation
+
+        -nail clean
+
+        -shape and file
+
+        -cuticle tidy
+
+        -hydrating moisturiser
+
+        -cuticle oil
+      duration: 60
+      cost: 33
+      disclaimer: |-
+        *Please note that no polish is applied in this treatment*
+        *Please remove polish/gel prior to treatment*
+image: /src/assets/images/nails/image.webp

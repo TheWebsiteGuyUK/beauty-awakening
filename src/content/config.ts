@@ -8,7 +8,6 @@ const treatments = defineCollection({
   loader: glob({ pattern: "**/*.yaml", base: "./src/content/treatments" }),
   schema: z.object({
     title: z.string(),
-    slug: z.string().optional(), // Optional if not present in YAML
     headline: z.string(),
     excerpt: z.string(),
     draft: z.boolean(),
@@ -23,7 +22,8 @@ const treatments = defineCollection({
           description: z.string(),
           duration: z.number(),
           cost: z.number(),
-          url: z.string(),
+          url: z.string().optional(),
+          disclaimer: z.string().optional(),
         }),
       })
     ),
@@ -39,6 +39,15 @@ const posts = defineCollection({
     title: z.string(),
   }),
 });
+
+const about = defineCollection({
+  // Type-check frontmatter using a schema
+  schema: z.object({
+    title: z.string(),
+    content: z.string(),
+  }),
+});
+
 
 const pages = defineCollection({
   // Type-check frontmatter using a schema
@@ -73,4 +82,4 @@ const home = defineCollection({
   }),
 });
 
-export const collections = { posts, treatments, pages, home };
+export const collections = { posts, treatments, pages, home, about };

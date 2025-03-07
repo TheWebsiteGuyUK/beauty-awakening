@@ -1,7 +1,7 @@
 import { fields, singleton } from "@keystatic/core";
 
 export const company = singleton({
-  label: "Company Details",
+  label: "Business Details",
   path: "src/content/settings/company",
   format: { data: "json" },
   schema: {
@@ -9,12 +9,27 @@ export const company = singleton({
       {
         street: fields.text({ label: "Street" }),
         city: fields.text({ label: "City" }),
-        county: fields.text({ label: "State" }),
+        county: fields.text({ label: "County" }),
         postcode: fields.text({ label: "Postcode" }),
       },
       {
         label: "Address",
         description: "The address of business",
+      }
+    ),
+    hours: fields.object(
+      {
+        monday: fields.text({ label: "Monday" }),
+        tuesday: fields.text({ label: "Tuesday" }),
+        wednesday: fields.text({ label: "Wednesday" }),
+        thursday: fields.text({ label: "Thursday" }),
+        friday: fields.text({ label: "Friday" }),
+        saturday: fields.text({ label: "Saturday" }),
+        sunday: fields.text({ label: "Sunday" }),
+      },
+      {
+        label: "Hours of Operation",
+        description: "The hours of operation of the business",
       }
     ),
     contact: fields.object(
@@ -39,6 +54,18 @@ export const company = singleton({
         label: "Company Registration",
         description:
           "The registration details of the business on Companies House",
+      }
+    ),
+    social: fields.object(
+      {
+        facebook: fields.text({ label: "Facebook" }),
+        // twitter: fields.text({ label: "Twitter" }),
+        instagram: fields.text({ label: "Instagram" }),
+        // linkedin: fields.text({ label: "LinkedIn" }),
+      },
+      {
+        label: "Social Media",
+        description: "The social media links of the business",
       }
     ),
   },

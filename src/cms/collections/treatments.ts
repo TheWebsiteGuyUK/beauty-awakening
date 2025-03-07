@@ -5,6 +5,7 @@ export const treatments = collection({
   label: "Treatments",
   slugField: "title",
   path: "src/content/treatments/*",
+  columns: ['title'],
   schema: {
     title: fields.slug({ name: { label: "Title" } }),
     headline: fields.text({ label: "Headline" }),
@@ -35,7 +36,7 @@ export const treatments = collection({
             publicPath: "/images/treatments/",
           }),
         }),
-      }
+      },
     ),
     blocks: fields.blocks(
       {
@@ -44,7 +45,7 @@ export const treatments = collection({
       {
         label: "Treatments",
         description: "Treatments available for this category",
-      }
+      },
     ),
     image: fields.image({
       label: "Featured Image",
@@ -52,5 +53,6 @@ export const treatments = collection({
       directory: "src/assets/images",
       publicPath: "/src/assets/images",
     }),
+
   },
 });

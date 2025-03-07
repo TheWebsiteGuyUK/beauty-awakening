@@ -1,30 +1,43 @@
 ---
 import { getCollection, getEntry } from "astro:content";
 import Layout from "@layouts/Default.astro";
+import Hero from "@components/Hero.astro";
 import TreatmentCard from "@components/TreatmentCard.astro";
 
+import bgImg from "@assets/images/spa.webp";
 
 const treatments = await getCollection("treatments");
 ---
 
 <Layout title="Treatments">
-  <h1>Treatments</h1>
+  <Hero
+    title="Treatments"
+    backgroundImageUrl={bgImg.src}
+    headline="Available Treatments"
+    intro="My treatments are designed to provide you with the best care and comfort. Choose from a variety of options to suit your needs and preferences."
+  />
 
-  <ul class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-    {
-      treatments.map((treatment) => (
-        <li>
-          <a href={`/treatments/${treatment?.id}`}>
-            <TreatmentCard
-              title={treatment.data.title}
-              headline={treatment.data.headline}
-              imgSrc={treatment.data.image}
-              imgAlt={treatment.data.title}
-              excerpt={treatment.data.excerpt}
-            />
-          </a>
-        </li>
-      ))
-    }
-  </ul>
+  <section>
+    <div class="container mx-auto px-3 py-20">
+      <ul class="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-3">
+        {
+          treatments.map((treatment) => (
+            <li>
+              <a
+                href={`/treatments/${treatment?.id}`}
+                class="flex h-full flex-grow flex-col">
+                <TreatmentCard
+                  title={treatment.data.title}
+                  headline={treatment.data.headline}
+                  imgSrc={treatment.data.image}
+                  imgAlt={treatment.data.title}
+                  excerpt={treatment.data.excerpt}
+                />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
 </Layout>
