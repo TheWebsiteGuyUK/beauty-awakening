@@ -4,9 +4,10 @@ import { home, branding, seo, company, about } from "@cms/singletons";
 
 export default config({
   storage: {
-    kind: "local",
-    // kind: 'github',
-    // repo: `${import.meta.env.REPO_OWNER}/${import.meta.env.REPO_NAME}`
+    kind: 'cloud',
+  },
+  cloud: {
+    project: 'TheWebsiteGuyUK/beauty-awakening',
   },
   ui: {
     brand: { name: "Beauty Awakening CMS" },
