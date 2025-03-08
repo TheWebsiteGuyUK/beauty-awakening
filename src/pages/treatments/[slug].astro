@@ -29,10 +29,10 @@ const blocks = treatment.data.blocks ?? [];
         </h2>
         <p>{treatment.data.excerpt}</p>
       </header>
-      <ul class="grid grid-cols-1 items-stretch gap-4 p-3 md:grid-cols-2">
+      <ul class="grid grid-cols-1 items-stretch gap-3 p-3 md:grid-cols-2">
         {
           blocks.map((block) => (
-            <li class="hover:bg-base-100 intersect:animate-fade-up animate-duration-1000 animate-delay-100 flex h-full scale-95 transition-all hover:scale-100 hover:rounded-3xl hover:shadow-lg">
+            <li class="hover:bg-base-100 intersect:animate-fade-up animate-duration-1000 animate-delay-100 flex h-full sm:scale-95 transition-all hover:scale-100 hover:rounded-3xl border border-base-100 hover:shadow-lg">
               <div class="card card-md flex flex-grow flex-col p-3">
                 <div class="card-body flex flex-grow flex-col">
                   <h2 class="card-title">{block.value.name}</h2>
