@@ -4,16 +4,18 @@ import Hero from "@components/Hero.astro";
 
 import bgImg from "@assets/images/spa.webp";
 
-import { getEntry } from "astro:content";
-const pageData = await getEntry("pages", "about");
+import data from "@content/pages/about.json";
 
-const page = await pageData?.data;
-// import data from "@content/pages/about.json";
+// Format the content into paragraphs
+const formattedContent = data.content
+  .split("\n\n")
+  .map((paragraph) => `<p>${paragraph}</p>`)
+  .join("");
 ---
 
-<Layout title={page.title}>
-  <Hero backgroundImageUrl={bgImg.src} headline={page.title} />
+<Layout title={data?.title}>
+  <Hero backgroundImageUrl={bgImg.src} headline={data?.title} />
   <article class="prose prose-xl mx-auto max-w-screen-xl py-20">
-    <div set:html={page.content}></div>
+    <div set:html={formattedContent} />
   </article>
 </Layout>
