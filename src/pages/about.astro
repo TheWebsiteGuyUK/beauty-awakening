@@ -14,8 +14,8 @@ const formattedContent = data.content
 ---
 
 <Layout title={data?.title}>
-  <Hero backgroundImageUrl={bgImg.src} headline={data?.title} />
-  <article class="prose prose-xl mx-auto max-w-screen-xl py-20">
+  <Hero backgroundImageUrl={bgImg.src} headline={data?.title}  />
+  <article class="prose prose-md md:prose-xl mx-auto max-w-screen-xl px-3">
     <div set:html={formattedContent} />
   </article>
 </Layout>
