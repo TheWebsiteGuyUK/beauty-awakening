@@ -11,7 +11,7 @@ import company from "@content/settings/company.json";
       <h6 class="footer-title">Services</h6>
       {
         treatments.map((treatment) => (
-          <a href={`/treatments/${treatment?.id}`}>{treatment.data.title}</a>
+          <a class="link link-hover" href={`/treatments/${treatment?.id}`}>{treatment.data.title}</a>
         ))
       }
     </nav>
@@ -112,12 +112,12 @@ import company from "@content/settings/company.json";
   </div>
   <div class="text-center text-base-content p-10 bg-base-300">
     <p>
-      Copyright <script is:inline>
+      Copyright &copy; <script is:inline>
         document.write(new Date().getFullYear());
-      </script> Beauty Awakening by Chantelle. All rights reserved.
+      </script> - Beauty Awakening by Chantelle. All rights reserved.
     </p>
     <p>
-      Website by{" "}
+      Website by
       <a
         href="https://www.thewebsiteguy.uk"
         target="_blank"
