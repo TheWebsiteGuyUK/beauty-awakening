@@ -10,12 +10,12 @@ import node from '@astrojs/node';
 // https://astro.build/config
 export default defineConfig({
   integrations: [react(), markdoc(), keystatic()],
-
+  output: 'static',
+  adapter: node({
+    mode: 'standalone',
+  }),
   vite: {
     plugins: [tailwindcss()],
   },
 
-  adapter: node({
-    mode: 'standalone',
-  }),
 });
