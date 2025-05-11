@@ -7,14 +7,14 @@ import bgImg from "@assets/images/spa.webp";
 import data from "@content/pages/about.json";
 
 // Format the content into paragraphs
-const formattedContent = data.content
+const formattedContent = data.content.body
   .split("\n\n")
   .map((paragraph) => `<p>${paragraph}</p>`)
   .join("");
 ---
 
 <Layout title={data?.page?.title}>
-  <Hero backgroundImageUrl={bgImg.src} headline={data?.headline}  />
+  <Hero backgroundImageUrl={bgImg.src} headline={data?.content?.headline}  />
   <article class="prose prose-md md:prose-xl mx-auto max-w-screen-xl px-3">
     <div set:html={formattedContent} />
   </article>

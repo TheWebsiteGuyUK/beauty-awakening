@@ -60,24 +60,27 @@ const posts = defineCollection({
   }),
 });
 
-// const about = defineCollection({
-//   loader: file("./src/content/pages/about.json"),
-//   schema: ({ image }) =>
-//     z
-//       .object({
-//         page: z
-//           .object({
-//             title: z.string().optional(),
-//             description: z.string().optional(),
-//           })
-//           .optional(),
-//         headline: z.string().optional(),
-//         excerpt: z.string().optional(),
-//         image: image().optional(),
-//         content: z.string().optional(),
-//       })
-//       .optional(),
-// });
+const about = defineCollection({
+  loader: file("./src/content/pages/about.json"),
+  schema: ({ image }) =>
+    z
+      .object({
+        page: z
+          .object({
+            title: z.string().optional(),
+            description: z.string().optional(),
+          })
+          .optional(),
+        content: z
+          .object({
+            headline: z.string().optional(),
+            body: z.string().optional(),
+            image: image().optional(),
+          })
+          .optional(),
+      })
+      .optional(),
+});
 
 // Home Page 
 const home = defineCollection({
