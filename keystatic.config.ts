@@ -4,10 +4,10 @@ import { home, branding, seo, company, about } from "@cms/singletons";
 
 export default config({
   storage: {
-    kind: 'cloud',
+    kind: "cloud",
   },
   cloud: {
-    project: 'beauty-awakening/beauty-awakening',
+    project: "the-website-guy-uk/beauty-awakening",
   },
   ui: {
     brand: { name: "Beauty Awakening CMS" },
