@@ -20,23 +20,25 @@ const treatments = await getCollection("treatments");
   <section>
     <div class="container mx-auto px-3 py-20">
       <ul
-        class="flex flex-wrap items-stretch justify-center gap-4 md:gap-6 lg:gap-8">
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 items-stretch justify-center gap-4 md:gap-6 lg:gap-8">
         {
-          treatments.map((treatment) => (
-            <li class="flex">
-              <a
-                href={`/treatments/${treatment?.id}`}
-                class="intersect:animate-fade-up animate-duration-3000 animate-delay-1000 flex h-96 max-w-96">
-                <TreatmentCard
-                  title={treatment.data.title}
-                  headline={treatment.data.headline}
-                  imgSrc={treatment.data.image}
-                  imgAlt={treatment.data.title}
-                  excerpt={treatment.data.excerpt}
-                />
-              </a>
-            </li>
-          ))
+          treatments
+            .filter((treatment) => !treatment.data.draft)
+            .map((treatment) => (
+              <li class="flex">
+                <a
+                  href={`/treatments/${treatment?.id}`}
+                  class="intersect:animate-fade-up animate-duration-3000 animate-delay-1000 flex h-96 max-w-96">
+                  <TreatmentCard
+                    title={treatment.data.title}
+                    headline={treatment.data.headline}
+                    imgSrc={treatment.data.image}
+                    imgAlt={treatment.data.title}
+                    excerpt={treatment.data.excerpt}
+                  />
+                </a>
+              </li>
+            ))
         }
       </ul>
     </div>
