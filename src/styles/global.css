@@ -3,8 +3,8 @@
 
 /* Tailwind */
 @import "tailwindcss";
-@import "tailwindcss-intersect";
 @import "tailwindcss-animated";
+@import "tailwindcss-intersect";
 
 @theme {
   --font-hand: "gelato-fresco-variable", sans-serif;

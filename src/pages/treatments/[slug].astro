@@ -31,10 +31,10 @@ export const prerender = true;
         </h2>
         <p>{treatment.data.excerpt}</p>
       </header>
-      <ul class="grid grid-cols-1 items-stretch gap-3 p-3 md:grid-cols-2">
+      <ul class="grid grid-cols-1 items-stretch gap-6 p-3 md:grid-cols-2">
         {
           blocks.map((block) => (
-            <li class="hover:bg-base-100 intersect:animate-fade-up animate-duration-1000 animate-delay-100 border-base-100 flex h-full border transition-all hover:scale-100 hover:rounded-3xl hover:shadow-lg sm:scale-95">
+            <li class="hover:bg-base-100 bg-base-200 intersect:animate-fade-up animate-duration-1000 animate-delay-1000 border-base-100 flex h-full border transition-all hover:scale-100 hover:rounded-3xl hover:shadow-lg sm:scale-95">
               <div class="card card-md flex flex-grow flex-col p-3">
                 <div class="card-body flex flex-grow flex-col">
                   <h2 class="card-title">{block.value.name}</h2>
@@ -90,3 +90,5 @@ export const prerender = true;
     </div>
   </section>
 </Layout>
+
+
