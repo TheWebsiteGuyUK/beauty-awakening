@@ -1,0 +1,18 @@
+{
+  "title": "Beauty Awakening",
+  "description": "Experience ultimate relaxation at Beauty Awakening by Chantelle, nestled in the tranquil gardens of Castle Hill, North Devon. Indulge in luxurious spa treatments, massage therapy, facials, manicures & pedicures, and hair removal services, tailored to enhance your natural beauty. Book an appointment today and awaken your glow in a serene and rejuvenating setting.",
+  "keywords": "Beauty Awakening, North Devon spa, Massage therapy Devon, Manicure & pedicure services, Hair removal Devon, Castle Hill beauty spa, Relaxation treatments, Rejuvenating beauty services",
+  "canonical": "https://beautyawakening.co.uk",
+  "opengraph": {
+    "ogTitle": "Beauty Awakening by Chantelle – Luxurious Spa in North Devon",
+    "ogDescription": "Experience ultimate relaxation at Beauty Awakening, nestled in the tranquil gardens of Castle Hill, North Devon. Indulge in spa treatments, massage therapy, facials, manicures & pedicures, and hair removal services designed to enhance your natural beauty.",
+    "ogImage": "/src/assets/images/opengraph/ogImage.png",
+    "ogImageAlt": "A tranquil spa setting featuring relaxing treatments in the heart of North Devon"
+  },
+  "twitter": {
+    "twitterTitle": "Beauty Awakening – Your Sanctuary for Relaxation in North Devon",
+    "twitterDescription": "Treat yourself to luxurious spa treatments, massage therapy, facials, and beauty services at Beauty Awakening, set in the serene gardens of Castle Hill. Book your glow today.",
+    "twitterImage": "/src/assets/images/twitter/twitterImage.webp",
+    "twitterImageAlt": "A tranquil spa setting featuring relaxing treatments in the heart of North Devon"
+  }
+}

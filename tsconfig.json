@@ -12,6 +12,7 @@
       "@layouts/*": ["./src/layouts/*"],
       "@api/*": [".src/api/*"],
       "@content/*": ["./src/content/*"],
+      "@settings/*": ["./src/settings/*"],
       "@styles/*": ["./src/styles/*"],
       "@base/*": ["./*"]
     },

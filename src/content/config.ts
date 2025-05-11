@@ -31,7 +31,26 @@ const treatments = defineCollection({
   }),
 });
 
-//Rest of collections
+const seo = defineCollection({
+  loader: file("./src/settings/seo.json"),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    keywords: z.string(),
+    canonical: z.string(),
+    opengraph: z.object({
+      ogTitle: z.string(),
+      ogDescription: z.string(),
+      ogImage: z.string(),
+    }),
+    twitter: z.object({
+      twitterTitle: z.string(),
+      twitterDescription: z.string(),
+      twitterImage: z.string(),
+      twitterImageAlt: z.string(),
+    }),
+  }),
+});
 
 const posts = defineCollection({
   // Type-check frontmatter using a schema

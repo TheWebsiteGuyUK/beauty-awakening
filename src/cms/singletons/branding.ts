@@ -2,7 +2,7 @@ import { fields, singleton } from "@keystatic/core";
 
 export const branding = singleton({
   label: "Branding",
-  path: "src/content/settings/branding",
+  path: "src/settings/branding",
   format: { data: "json" },
   schema: {
     site: fields.object({

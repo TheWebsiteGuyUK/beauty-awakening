@@ -10,20 +10,41 @@ export interface Props {
 const { title } = Astro.props;
 
 // Keystatic content
-import company from "@content/settings/company.json";
-import branding from "@content/settings/branding.json";
+import seo from "@settings/seo.json";
+import branding from "@settings/branding.json";
 ---
 
 <!doctype html>
 <html lang="en" data-theme="beautyTheme" class="bg-base-300">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
+    <meta name="description" content={seo.description || "Default description"} />
+    <meta name="keywords" content={seo.keywords || "default, keywords"} />
+    <meta name="author" content="Beauty Awakening by Chantelle" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href={branding.site.favicon} />
     <meta name="generator" content={Astro.generator} />
     <ClientRouter />
-    <title>{title}</title>
+    <title>{title || seo.title || "Default Title"}</title>
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content={seo.opengraph.ogTitle || seo.title} />
+    <meta property="og:description" content={seo.opengraph.ogDescription || seo.description} />
+    <meta property="og:image" content={seo.opengraph.ogImage} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={seo.canonical || "https://beautyawakening.co.uk"} />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:site_name" content={branding.site.siteName || "Beauty Awakening"} />
+    <meta property="og:image:alt" content={seo.opengraph.ogImageAlt || "Image description"} />
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:title" content={seo.twitter.twitterTitle || seo.title} />
+    <meta name="twitter:description" content={seo.twitter.twitterDescription || seo.description} />
+    <meta name="twitter:image" content={seo.twitter.twitterImage} />
+    <meta name="twitter:image:alt" content={seo.twitter.twitterImageAlt || "Image description"} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content={seo.canonical || "https://beautyawakening.co.uk"} />
+    <meta name="twitter:creator" content={branding.site.siteName || "Beauty Awakening"} />
   </head>
   <body class="scroll-auto">
     <main class="bg-base-300">

@@ -2,12 +2,13 @@ import { fields, singleton } from "@keystatic/core";
 
 export const seo = singleton({
   label: "SEO",
-  path: "src/content/settings/seo",
+  path: "src/settings/seo",
   format: { data: "json" },
   schema: {
     title: fields.text({ label: "Title" }),
     description: fields.text({ label: "Description", multiline: true }),
     keywords: fields.text({ label: "Keywords" }),
+    canonical: fields.url({ label: "Canonical URL" }),
     opengraph: fields.object(
       {
         ogTitle: fields.text({ label: "OG Title" }),
@@ -22,6 +23,10 @@ export const seo = singleton({
           directory: "src/assets/images",
           publicPath: "/src/assets/images/",
         }),
+        ogImageAlt: fields.text({
+          label: "OG Image Alt",
+          description: "Alt text for OG Image (max 420 characters).",
+        })
       },
       {
         label: "Open Graph",

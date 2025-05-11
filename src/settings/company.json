@@ -1,0 +1,26 @@
+{
+  "address": {
+    "street": "Castle Hill Gardens",
+    "city": "Filleigh",
+    "county": "Barnstaple",
+    "postcode": "EX32 0RQ"
+  },
+  "hours": {
+    "monday": "Closed",
+    "tuesday": "10:00 am - 7:00 pm",
+    "wednesday": "10:00 am - 5:30 pm",
+    "thursday": "10:00 am - 5:30 pm",
+    "friday": "10:00 am - 5:30 pm",
+    "saturday": "9:30 am - 1:30 pm",
+    "sunday": "Closed"
+  },
+  "contact": {
+    "mobile": "07882577263",
+    "email": "chanty@beautyawakening.co.uk"
+  },
+  "company": {},
+  "social": {
+    "facebook": "https://www.facebook.com/share/1H2BkGueZx/?mibextid=LQQJ4d",
+    "instagram": "https://www.instagram.com/beautyawakening_bychantelle?igsh=MTI5eng4dGdwZTNqNg%3D%3D&utm_source=qr"
+  }
+}
