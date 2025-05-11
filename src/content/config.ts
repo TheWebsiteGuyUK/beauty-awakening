@@ -6,29 +6,30 @@ import { glob, file } from "astro/loaders";
 const treatments = defineCollection({
   // Type-check frontmatter using a schema
   loader: glob({ pattern: "**/*.yaml", base: "./src/content/treatments" }),
-  schema: z.object({
-    title: z.string(),
-    headline: z.string(),
-    excerpt: z.string(),
-    draft: z.boolean(),
-    seo: z.object({
-      discriminant: z.boolean(),
-    }),
-    blocks: z.array(
-      z.object({
-        discriminant: z.string(),
-        value: z.object({
-          name: z.string(),
-          description: z.string(),
-          duration: z.number(),
-          cost: z.number(),
-          url: z.string().optional(),
-          disclaimer: z.string().optional(),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      headline: z.string(),
+      excerpt: z.string(),
+      draft: z.boolean(),
+      seo: z.object({
+        discriminant: z.boolean(),
+      }),
+      blocks: z.array(
+        z.object({
+          discriminant: z.string(),
+          value: z.object({
+            name: z.string(),
+            description: z.string(),
+            duration: z.number(),
+            cost: z.number(),
+            url: z.string().optional(),
+            disclaimer: z.string().optional(),
+          }),
         }),
-      })
-    ),
-    image: z.string(),
-  }),
+      ),
+      image: image(),
+    }),
 });
 
 const seo = defineCollection({
@@ -59,46 +60,56 @@ const posts = defineCollection({
   }),
 });
 
-const about = defineCollection({
-  // Type-check frontmatter using a schema
-  schema: z.object({
-    title: z.string(),
-    content: z.string(),
-  }),
-});
+// const about = defineCollection({
+//   loader: file("./src/content/pages/about.json"),
+//   schema: ({ image }) =>
+//     z
+//       .object({
+//         page: z
+//           .object({
+//             title: z.string().optional(),
+//             description: z.string().optional(),
+//           })
+//           .optional(),
+//         headline: z.string().optional(),
+//         excerpt: z.string().optional(),
+//         image: image().optional(),
+//         content: z.string().optional(),
+//       })
+//       .optional(),
+// });
 
-
-const pages = defineCollection({
-  // Type-check frontmatter using a schema
-  schema: z.object({
-    title: z.string(),
-  }),
-});
-
+// Home Page 
 const home = defineCollection({
-  type: "data",
-  schema: z.object({
-    title: z.string(),
-    hero: z.object({
-      headline: z.string(), // headline as a string
-      intro: z.string().optional(), // make this optional if it's empty in the YAML
-      image: z.string(),
+  loader: file("./src/content/pages/home.json"),
+  schema: ({ image }) =>
+    z.object({
+      page: z.object({
+        title: z.string(),
+        description: z.string(),
+      }).optional(),
+      hero: z.object({
+        headline: z.string(), 
+        intro: z.string().optional(), 
+        image: image(),
+      }).optional(),
+      location: z.object({
+        headline: z.string(),
+        content: z.string(),
+        image: image(),
+        resume: z.string().optional(),
+      }).optional(),
+      cta: z.object({
+        headline: z.string(),
+        content: z.string(),
+        button: z.object({
+          label: z.string(),
+          link: z.string(),
+        }),
+        image1: image(),
+        image2: image(),
+      }).optional(),
     }),
-    location: z.object({
-      headline: z.string(),
-      content: z.string(),
-      image: z.string(),
-      resume: z.string().optional(),
-    }),
-    cta: z.object({
-      headline: z.string(),
-      content: z.string(),
-      button: z.object({
-        label: z.string(),
-        link: z.string(),
-      }),
-    }),
-  }),
 });
 
-export const collections = { posts, treatments, pages, home, about };
+export const collections = { posts, treatments, home, about };

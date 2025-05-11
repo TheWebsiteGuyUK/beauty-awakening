@@ -1,5 +1,4 @@
 import { fields, singleton } from "@keystatic/core";
-import { imageConfig } from "astro:assets";
 
 export const about = singleton({
   label: "About Page",

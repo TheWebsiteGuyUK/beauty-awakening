@@ -11,7 +11,9 @@ import company from "@settings/company.json";
       <h6 class="footer-title">Services</h6>
       {
         treatments.map((treatment) => (
-          <a class="link link-hover" href={`/treatments/${treatment?.id}`}>{treatment.data.title}</a>
+          <a class="link link-hover" href={`/treatments/${treatment?.id}`}>
+            {treatment.data.title}
+          </a>
         ))
       }
     </nav>
@@ -110,13 +112,13 @@ import company from "@settings/company.json";
       </div>
     </nav>
   </div>
-  <div class="text-center text-base-content p-10 bg-base-300">
+  <div class="text-base-content bg-base-300 p-10 text-center">
     <p>
       Copyright &copy; <script is:inline>
         document.write(new Date().getFullYear());
       </script> - Beauty Awakening by Chantelle. All rights reserved.
     </p>
-    <p>
+    <p class="py-3 text-sm">
       Website by
       <a
         href="https://www.thewebsiteguy.uk"

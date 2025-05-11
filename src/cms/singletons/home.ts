@@ -5,7 +5,12 @@ export const home = singleton({
   path: "src/content/pages/home",
   format: { data: "json" },
   schema: {
-    title: fields.text({ label: "Page Title" }),
+    page: fields.object(
+      {
+        title: fields.text({ label: "Page Title" }),
+        description: fields.text({ label: "Page Description" }),
+      },
+    ),
     hero: fields.object(
       {
         headline: fields.markdoc.inline({ label: "Header" }),

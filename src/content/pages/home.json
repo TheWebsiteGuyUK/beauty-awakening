@@ -1,5 +1,8 @@
 {
-  "title": "Beauty & Spa",
+  "page": {
+    "title": "Beauty Awakening by Chantelle",
+    "description": "Beauty Awakening, by Chantelle is set in the stunning and tranquil gardens of Castle Hill, Filleigh, North Devon."
+  },
   "hero": {
     "headline": "A warm glowing welcome awaits you\n",
     "intro": "",
