@@ -19,13 +19,14 @@ const treatments = await getCollection("treatments");
 
   <section>
     <div class="container mx-auto px-3 py-20">
-      <ul class="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-3">
+      <ul
+        class="flex flex-wrap items-stretch justify-center gap-4 md:gap-6 lg:gap-8">
         {
           treatments.map((treatment) => (
-            <li>
+            <li class="flex">
               <a
                 href={`/treatments/${treatment?.id}`}
-                class="flex h-full flex-grow flex-col">
+                class="intersect:animate-fade-up animate-duration-3000 animate-delay-1000 flex h-96 max-w-96">
                 <TreatmentCard
                   title={treatment.data.title}
                   headline={treatment.data.headline}
